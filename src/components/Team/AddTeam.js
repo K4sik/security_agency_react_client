@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { addTeam } from "../../actions/teamActions";
+import classnames from "classnames";
 
 class AddTeam extends Component {
     constructor(){
@@ -19,8 +23,9 @@ class AddTeam extends Component {
         const newTeam = {
             name: this.state.name,
             description: this.state.description
-        }
-        console.log(newTeam);
+        };
+        // console.log(newTeam);
+        this.props.addTeam(newTeam, this.props.history);
     }
     render() {
         return (
@@ -59,4 +64,14 @@ class AddTeam extends Component {
     }
 }
 
-export default AddTeam;
+AddTeam.propTypes = {
+    addTeam: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+}
+
+
+const mapStateToProps = state => ({
+    errors: state.errors
+})
+
+export default connect(mapStateToProps, {addTeam}) (AddTeam);
