@@ -10,14 +10,23 @@ class AddTeam extends Component {
         super();
         this.state = {
             name: "",
-            description: ""
+            description: "",
+            errors: {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({ errors: nextProps.errors })
+        }
+    }
+
     onChange(e){
         this.setState({[e.target.name]:e.target.value})
     }
+
     onSubmit(e){
         e.preventDefault()
         const newTeam = {
@@ -27,7 +36,9 @@ class AddTeam extends Component {
         // console.log(newTeam);
         this.props.addTeam(newTeam, this.props.history);
     }
+
     render() {
+        const { errors } = this.state;
         return (
             <div className="addProjectTask">
                 <div className="container">
@@ -39,10 +50,30 @@ class AddTeam extends Component {
                             <h4 className="display-4 text-center">Add Team</h4>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
-                                    <input type="text" className="form-control form-control-lg" name="name" value={this.state.name} placeholder="Team name" onChange={this.onChange} />
+                                    <input 
+                                        type="text" 
+                                        className={classnames("form-control form-control-lg", {
+                                            "is-invalid": errors.name
+                                        })} 
+                                        name="name" 
+                                        value={this.state.name} 
+                                        placeholder="Team name" 
+                                        onChange={this.onChange} 
+                                    />
+                                    {
+                                        errors.name && (
+                                            <div className="invalid-feedback">{ errors.name }</div>
+                                        )
+                                    }
                                 </div>
                                 <div className="form-group">
-                                    <textarea className="form-control form-control-lg" name="description" value={this.state.description} placeholder="Description" onChange={this.onChange} ></textarea>
+                                    <textarea 
+                                        className="form-control form-control-lg" 
+                                        name="description" 
+                                        value={this.state.description} 
+                                        placeholder="Description" 
+                                        onChange={this.onChange} >
+                                    </textarea>
                                 </div>
                                 {
                                     // <div className="form-group">
