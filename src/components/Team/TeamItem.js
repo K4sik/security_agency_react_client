@@ -6,16 +6,17 @@ var divStyle = {
 
 class TeamItem extends Component {
     render() {
+        const {team} = this.props;
         return (
             <div style = { divStyle }>
                 <div className="card mb-1 bg-light">
                     <div className="card-header text-primary">
-                        ID: TeamId
+                        ID: {team.id}
                     </div>
                     <div className="card-body bg-light">
-                        <h5 className="card-title">Name</h5>
+                        <h5 className="card-title">{team.name}</h5>
                         <p className="card-text text-truncate ">
-                            Description
+                            {team.description}
                         </p>
                         <a href="/" className="btn btn-primary">
                             View / Update
