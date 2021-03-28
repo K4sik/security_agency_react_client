@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ERRORS, GET_TEAMS } from "./types"
+import { DELETE_TEAM, GET_ERRORS, GET_TEAMS } from "./types"
 
 export const addTeam = (team, history) => async dispatch => {
     try {
@@ -23,4 +23,15 @@ export const getBacklog = () => async dispatch => {
         type: GET_TEAMS,
         payload: res.data
     })
-}
+};
+
+export const deleteTeam = team_id => async dispatch =>{
+    if(window.confirm(
+        `Are you sure want to delete this team with id ${team_id}? \nThis action cannot be undone. `)){
+        await axios.delete(`http://localhost:8080/api/team/${team_id}`)
+        dispatch({
+            type: DELETE_TEAM,
+            payload: team_id
+        })
+    }
+};

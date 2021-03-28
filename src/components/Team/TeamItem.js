@@ -1,10 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { deleteTeam } from "../../actions/teamActions";
 
 var divStyle = {
     margin:"6px"
 }
 
 class TeamItem extends Component {
+
+    onDelete(team_id){
+        this.props.deleteTeam(team_id);
+    }
+
     render() {
         const {team} = this.props;
         return (
@@ -22,7 +31,8 @@ class TeamItem extends Component {
                             View / Update
                         </a>
 
-                        <button className="btn btn-danger ml-4">
+                        <button className="btn btn-danger ml-4" 
+                            onClick={this.onDelete.bind(this, team.id)}>
                             Delete
                         </button>
                     </div>
@@ -33,4 +43,8 @@ class TeamItem extends Component {
     }
 }
 
-export default TeamItem
+TeamItem.propTypes = {
+    deleteTeam: PropTypes.func.isRequired
+};
+
+export default connect(null, {deleteTeam}) (TeamItem);
