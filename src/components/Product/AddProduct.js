@@ -3,6 +3,29 @@ import { Link } from 'react-router-dom'
 import classnames from "classnames";
 
 class AddProduct extends Component {
+    constructor(){
+        super();
+        this.state = {
+            name: "",
+            description: ""
+        };
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onChange(e){
+        this.setState({[e.target.name]:e.target.value});
+    }
+
+    onSubmit(e){
+        e.preventDefault();
+        const newPosition = {
+            name: this.state.name,
+            description: this.state.description
+        };
+        console.log(newPosition);
+    }
+
     render() {
         return (
             <div className="addProduct">
@@ -21,9 +44,9 @@ class AddProduct extends Component {
                                            // "is-invalid": errors.name
                                         })} 
                                         name="name" 
-                                        // value={this.state.name} 
+                                        value={this.state.name} 
                                         placeholder="Product name" 
-                                        // onChange={this.onChange} 
+                                        onChange={this.onChange} 
                                     />
                                     {
                                         // errors.name && (
@@ -35,9 +58,9 @@ class AddProduct extends Component {
                                     <textarea 
                                         className="form-control form-control-lg" 
                                         name="description" 
-                                        // value={this.state.description} 
+                                        value={this.state.description} 
                                         placeholder="Description" 
-                                        // onChange={this.onChange} 
+                                        onChange={this.onChange} 
                                         >
                                     </textarea>
                                 </div>
