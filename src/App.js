@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import AddTeam from "./components/Team/AddTeam";
 import { Provider } from "react-redux";
 import store from "./store";
+import UpdateTeam from "./components/Team/UpdateTeam";
 
 class App extends Component {
   render(){
@@ -17,6 +18,7 @@ class App extends Component {
             <Navbar />
             <Route exact path="/team" component={TeamBoard} />
             <Route exact path="/team/addTeam" component={AddTeam} />
+            <Route exact path="/team/updateTeam/:team_id" component={UpdateTeam} />
           </div>
         </Router>
       </Provider>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_TEAM, GET_ERRORS, GET_TEAMS } from "./types"
+import { DELETE_TEAM, GET_ERRORS, GET_TEAMS, GET_TEAM } from "./types"
 
 export const addTeam = (team, history) => async dispatch => {
     try {
@@ -35,3 +35,15 @@ export const deleteTeam = team_id => async dispatch =>{
         })
     }
 };
+
+export const getTeam = (team_id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/team/${team_id}`)
+        dispatch({
+            type: GET_TEAM,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/team");
+    }
+}

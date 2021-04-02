@@ -40,7 +40,7 @@ class AddTeam extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div className="addProjectTask">
+            <div className="addTeam">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">

@@ -27,9 +27,9 @@ class TeamItem extends Component {
                         <p className="card-text text-truncate ">
                             {team.description}
                         </p>
-                        <a href="/" className="btn btn-primary">
+                        <Link to={`/team/updateTeam/${team.id}`} className="btn btn-primary">
                             View / Update
-                        </a>
+                        </Link>
 
                         <button className="btn btn-danger ml-4" 
                             onClick={this.onDelete.bind(this, team.id)}>

@@ -1,7 +1,8 @@
-import { DELETE_TEAM, GET_TEAMS } from "../actions/types";
+import { DELETE_TEAM, GET_TEAM, GET_TEAMS } from "../actions/types";
 
 const initialState = {
-    teams: []
+    teams: [],
+    team: {}
 }
 
 export default function(state = initialState, action){
@@ -11,6 +12,12 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 teams: action.payload
+            };
+
+        case GET_TEAM:
+            return{
+                ...state,
+                team: action.payload
             };
 
         case DELETE_TEAM:
