@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import TypeOfSecurityItem from './TypeOfSecurity/TypeOfSecurityItem';
 
 class TypeOfSecurityBoard extends Component {
     render() {
@@ -12,25 +13,9 @@ class TypeOfSecurityBoard extends Component {
                 <hr />
                 <div className="container">
                     <div className="row">
-                            <div className="card mb-1 bg-light">
-
-                                <div className="card-header text-primary">
-                                    ID: type_of_security_id
-                                </div>
-                                <div className="card-body bg-light">
-                                    <h5 className="card-title">type_of_security name</h5>
-                                    <p className="card-text text-truncate ">
-                                        description
-                                    </p>
-                                    <Link to="" className="btn btn-primary">
-                                        View / Update
-                                    </Link>
-
-                                    <button className="btn btn-danger ml-4">
-                                        Delete
-                                    </button>
-                                </div>
-                            </div>
+                        <TypeOfSecurityItem />
+                        <TypeOfSecurityItem />
+                        <TypeOfSecurityItem />
 
                         
                     </div>
