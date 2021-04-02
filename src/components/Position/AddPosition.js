@@ -9,7 +9,7 @@ class AddPosition extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-                            <Link to="/team" className="btn btn-light">
+                            <Link to="/position" className="btn btn-light">
                                 Back to Board
                             </Link>
                             <h4 className="display-4 text-center">Add Position</h4>
