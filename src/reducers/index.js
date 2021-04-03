@@ -1,4 +1,5 @@
 import { combineReducers } from "redux"
+import documentTypeReducer from "./documentTypeReducer";
 import errorsReducer from "./errorsReducer";
 import paymentTypeReducer from "./paymentTypeReducer";
 import positionReducer from "./positionReducer";
@@ -13,5 +14,6 @@ export default combineReducers ({
     position: positionReducer,
     status: statusReducer,
     typeOfSecurity: typeOfSecurityReducer,
-    paymentType: paymentTypeReducer
+    paymentType: paymentTypeReducer,
+    documentType: documentTypeReducer
 })
