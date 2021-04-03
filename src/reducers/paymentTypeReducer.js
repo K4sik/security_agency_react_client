@@ -4,7 +4,7 @@ const initialState = {
     paymentTypes: []
 }
 
-export default function(state = initialState, action){
+export default function anonymous(state = initialState, action){
     switch(action.type){
         
         case GET_PAYMENTTYPES:
