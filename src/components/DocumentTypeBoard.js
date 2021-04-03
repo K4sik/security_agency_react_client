@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import DocumentTypeItem from './DocumentType/DocumentTypeItem';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getBacklog } from '../actions/documentTypeAction'
 
 class DocumentTypeBoard extends Component {
+
+    componentDidMount(){
+        this.props.getBacklog();
+    }
+
     render() {
         return (
             <div className="container">
@@ -25,4 +33,13 @@ class DocumentTypeBoard extends Component {
     }
 }
 
-export default DocumentTypeBoard
+DocumentTypeBoard.propTypes = {
+    getBacklog: PropTypes.func.isRequired,
+    documentTypes: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    documentTypes: state.documentType
+});
+
+export default connect(mapStateToProps, { getBacklog }) (DocumentTypeBoard);

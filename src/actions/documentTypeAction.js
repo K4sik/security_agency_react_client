@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ERRORS } from "./types";
+import { GET_DOCUMENTTYPES, GET_ERRORS } from "./types";
 
 export const addDocumentType = (document_type, history) => async dispatch => {
     try {
@@ -15,4 +15,12 @@ export const addDocumentType = (document_type, history) => async dispatch => {
             payload: error.response.data
         });
     }
-}
+};
+
+export const getBacklog = () => async dispatch => {
+    const res = await axios.get("http://localhost:8080/api/document_type/all");
+    dispatch({
+        type: GET_DOCUMENTTYPES,
+        payload: res.data
+    })
+};
