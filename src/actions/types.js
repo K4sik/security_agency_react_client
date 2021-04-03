@@ -7,3 +7,5 @@ export const DELETE_TEAM = "DELETE_TEAM";
 export const GET_POSITIONS = "GET_POSITIONS";
 
 export const GET_STATUSES = "GET_STATUSES";
+
+export const GET_TYPESOFSECURITY = "GET_TYPESOFSECURITY";
