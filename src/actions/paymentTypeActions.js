@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ERRORS } from "./types";
+import { GET_ERRORS, GET_PAYMENTTYPES } from "./types";
 
 export const addPaymentType = (payment_type, history) => async dispatch => {
     try {
@@ -15,4 +15,12 @@ export const addPaymentType = (payment_type, history) => async dispatch => {
             payload: error.response.data
         });
     }
-}
+};
+
+export const getBacklog = () => async dispatch => {
+    const res = await axios.get("http://localhost:8080/api/payment_type/all");
+    dispatch({
+        type: GET_PAYMENTTYPES,
+        payload: res.data
+    })
+};
