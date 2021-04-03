@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import PositionItem from './Position/PositionItem';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getBacklog } from '../actions/positionActions'
 
 class PositionBoard extends Component {
+
+    componentDidMount(){
+        this.props.getBacklog();
+    }
+
     render() {
         return (
             <div className="container">
@@ -24,4 +32,13 @@ class PositionBoard extends Component {
     }
 }
 
-export default PositionBoard
+PositionBoard.propTypes = {
+    getBacklog: PropTypes.func.isRequired,
+    positions: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    positions: state.position
+});
+
+export default connect(mapStateToProps, { getBacklog }) (PositionBoard);
