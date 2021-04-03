@@ -19,11 +19,11 @@ class AddDocumentType extends Component {
 
     onSubmit(e){
         e.preventDefault();
-        const newPosition = {
+        const newDocumentType = {
             name: this.state.name,
             description: this.state.description
         };
-        console.log(newPosition);
+        console.log(newDocumentType);
     }
 
     render() {

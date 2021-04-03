@@ -19,11 +19,11 @@ class AddTypeOfSecurity extends Component {
 
     onSubmit(e){
         e.preventDefault();
-        const newPosition = {
+        const newTypeOfSecurity = {
             name: this.state.name,
             description: this.state.description
         };
-        console.log(newPosition);
+        console.log(newTypeOfSecurity);
     }
 
     render() {

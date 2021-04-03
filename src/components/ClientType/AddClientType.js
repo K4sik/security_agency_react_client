@@ -19,16 +19,16 @@ class AddClientType extends Component {
 
     onSubmit(e){
         e.preventDefault();
-        const newPosition = {
+        const newClientType = {
             name: this.state.name,
             description: this.state.description
         };
-        console.log(newPosition);
+        console.log(newClientType);
     }
     
     render() {
         return (
-            <div className="addDocumentType">
+            <div className="addClientType">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">

@@ -7,7 +7,8 @@ class AddProduct extends Component {
         super();
         this.state = {
             name: "",
-            description: ""
+            price: "",
+            provider: ""
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -19,11 +20,12 @@ class AddProduct extends Component {
 
     onSubmit(e){
         e.preventDefault();
-        const newPosition = {
+        const newProduct = {
             name: this.state.name,
-            description: this.state.description
+            price: this.state.price,
+            provider: this.state.provider
         };
-        console.log(newPosition);
+        console.log(newProduct);
     }
 
     render() {
@@ -38,32 +40,70 @@ class AddProduct extends Component {
                             <h4 className="display-4 text-center">Add Product</h4>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
-                                    <input 
-                                        type="text" 
-                                        className={classnames("form-control form-control-lg", {
-                                           // "is-invalid": errors.name
-                                        })} 
-                                        name="name" 
-                                        value={this.state.name} 
-                                        placeholder="Product name" 
-                                        onChange={this.onChange} 
-                                    />
-                                    {
-                                        // errors.name && (
-                                        //     <div className="invalid-feedback">{ errors.name }</div>
-                                        // )
-                                    }
+                                    <div className="form-group">
+                                        <input 
+                                            type="text" 
+                                            className={classnames("form-control form-control-lg", {
+                                            // "is-invalid": errors.name
+                                            })} 
+                                            name="name" 
+                                            value={this.state.name} 
+                                            placeholder="Product name" 
+                                            onChange={this.onChange} 
+                                        />
+                                        {
+                                            // errors.name && (
+                                            //     <div className="invalid-feedback">{ errors.name }</div>
+                                            // )
+                                        }
+                                    </div>
+                                    <div className="form-group">
+                                        <input 
+                                            type="text" 
+                                            className={classnames("form-control form-control-lg", {
+                                            // "is-invalid": errors.name
+                                            })} 
+                                            name="price" 
+                                            value={this.state.price} 
+                                            placeholder="Price" 
+                                            onChange={this.onChange} 
+                                        />
+                                        {
+                                            // errors.name && (
+                                            //     <div className="invalid-feedback">{ errors.name }</div>
+                                            // )
+                                        }
+                                    </div>
+                                    <div className="form-group">
+                                        <input 
+                                            type="text" 
+                                            className={classnames("form-control form-control-lg", {
+                                            // "is-invalid": errors.name
+                                            })} 
+                                            name="provider" 
+                                            value={this.state.provider} 
+                                            placeholder="provider" 
+                                            onChange={this.onChange} 
+                                        />
+                                        {
+                                            // errors.name && (
+                                            //     <div className="invalid-feedback">{ errors.name }</div>
+                                            // )
+                                        }
+                                    </div>
                                 </div>
-                                <div className="form-group">
-                                    <textarea 
-                                        className="form-control form-control-lg" 
-                                        name="description" 
-                                        value={this.state.description} 
-                                        placeholder="Description" 
-                                        onChange={this.onChange} 
-                                        >
-                                    </textarea>
-                                </div>
+                                {
+                                // <div className="form-group">
+                                //     <textarea 
+                                //         className="form-control form-control-lg" 
+                                //         name="description" 
+                                //         value={this.state.description} 
+                                //         placeholder="Description" 
+                                //         onChange={this.onChange} 
+                                //         >
+                                //     </textarea>
+                                // </div>
+                                }
                                 <input type="submit" className="btn btn-primary btn-block mt-4" />
                             </form>
                         </div>

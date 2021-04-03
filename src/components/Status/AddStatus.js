@@ -19,16 +19,16 @@ class AddStatus extends Component {
 
     onSubmit(e){
         e.preventDefault();
-        const newPosition = {
+        const newStatus = {
             name: this.state.name,
             description: this.state.description
         };
-        console.log(newPosition);
+        console.log(newStatus);
     }
     
     render() {
         return (
-            <div className="addProduct">
+            <div className="addStatus">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
