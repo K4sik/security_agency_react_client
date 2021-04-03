@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { addTypeOfSecurity } from "../../actions/typeOfSecurityActions";
 import classnames from "classnames";
 
 class AddTypeOfSecurity extends Component {
@@ -7,10 +10,17 @@ class AddTypeOfSecurity extends Component {
         super();
         this.state = {
             name: "",
-            description: ""
+            description: "",
+            errors: {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps){
+        if (nextProps.errors) {
+            this.setState({ errors: nextProps.errors });
+        }
     }
 
     onChange(e){
@@ -23,10 +33,12 @@ class AddTypeOfSecurity extends Component {
             name: this.state.name,
             description: this.state.description
         };
-        console.log(newTypeOfSecurity);
+        // console.log(newTypeOfSecurity);
+        this.props.addTypeOfSecurity(newTypeOfSecurity, this.props.history);
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <div className="addTypeOfSecurity">
                 <div className="container">
@@ -41,7 +53,7 @@ class AddTypeOfSecurity extends Component {
                                     <input 
                                         type="text" 
                                         className={classnames("form-control form-control-lg", {
-                                        // "is-invalid": errors.name
+                                        "is-invalid": errors.name
                                         })} 
                                         name="name" 
                                         value={this.state.name} 
@@ -49,9 +61,9 @@ class AddTypeOfSecurity extends Component {
                                         onChange={this.onChange} 
                                     />
                                     {
-                                        // errors.name && (
-                                        //     <div className="invalid-feedback">{ errors.name }</div>
-                                        // )
+                                        errors.name && (
+                                            <div className="invalid-feedback">{ errors.name }</div>
+                                        )
                                     }
                                 </div>
                                 <div className="form-group">
@@ -74,4 +86,13 @@ class AddTypeOfSecurity extends Component {
     }
 }
 
-export default AddTypeOfSecurity
+AddTypeOfSecurity.propTypes = {
+    addTypeOfSecurity: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, { addTypeOfSecurity }) (AddTypeOfSecurity);
