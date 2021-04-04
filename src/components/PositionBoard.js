@@ -12,6 +12,43 @@ class PositionBoard extends Component {
     }
 
     render() {
+
+        const { positions } = this.props.positions;
+
+        let BoardContent;
+        let items = [];
+
+        const BoardAlgorithm = positions => {
+            if (positions.length < 1){
+                return(
+                    <div className="alert alert-info text-center" role="alert">
+                        No Positions on this board
+                    </div>
+                )  
+            } else {
+                const tasks = positions.map(position => (
+                    <PositionItem key={ position.id } position = {position} />
+                ));
+
+                for (let i=0; i<positions.length; i++){
+                    // console.log(tasks[i]);
+                    items.push(tasks[i]);
+                }
+
+                return (
+                    <React.Fragment>
+                        <div className="container">
+                            <div className="row">
+                                {items}
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )
+            }
+        };
+
+        BoardContent = BoardAlgorithm(positions);
+
         return (
             <div className="container">
                 <Link to="/position/addPosition" className="btn btn-primary mb-3">
@@ -19,14 +56,7 @@ class PositionBoard extends Component {
                 </Link>
                 <br />
                 <hr />
-                <div className="container">
-                    <div className="row">
-                        <PositionItem />
-                        <PositionItem />
-                        <PositionItem />
-                        <PositionItem />
-                    </div>
-                </div>                
+                {BoardContent}           
             </div>
         );
     }

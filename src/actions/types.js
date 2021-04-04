@@ -5,6 +5,7 @@ export const GET_TEAM = "GET_TEAM";
 export const DELETE_TEAM = "DELETE_TEAM";
 
 export const GET_POSITIONS = "GET_POSITIONS";
+export const DELETE_POSITION = "DELETE_POSITION";
 
 export const GET_STATUSES = "GET_STATUSES";
 

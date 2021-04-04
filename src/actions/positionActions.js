@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ERRORS, GET_POSITIONS } from "./types";
+import { DELETE_POSITION, GET_ERRORS, GET_POSITIONS } from "./types";
 
 export const addPosition = (position, history) => async dispatch => {
     try {
@@ -23,4 +23,15 @@ export const getBacklog = () => async dispatch => {
         type: GET_POSITIONS,
         payload: res.data
     })
+};
+
+export const deletePosition = position_id => async dispatch =>{
+    if(window.confirm(
+        `Are you sure want to delete this position with id ${position_id}? \nThis action cannot be undone. `)){
+        await axios.delete(`http://localhost:8080/api/position/${position_id}`)
+        dispatch({
+            type: DELETE_POSITION,
+            payload: position_id
+        })
+    }
 };
