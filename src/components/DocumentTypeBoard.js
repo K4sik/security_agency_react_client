@@ -12,6 +12,44 @@ class DocumentTypeBoard extends Component {
     }
 
     render() {
+
+        const { documentTypes } = this.props.documentTypes;
+
+        let BoardContent;
+        let items = [];
+
+        const BoardAlgorithm = documentTypes => {
+            if (documentTypes.length < 1) {
+                return(
+                    <div className="alert alert-info text-center" role="alert">
+                        No Document Types on this board
+                    </div>
+                )                
+            } else {
+                const tasks = documentTypes.map(documentType => (
+                    <DocumentTypeItem key={documentType.id} documentType={documentType} />
+                ));
+
+                for (let i=0; i<tasks.length; i++){
+                    // console.log(tasks[i]);
+                    items.push(tasks[i]);
+                }
+
+                return (
+                    <React.Fragment>
+                        <div className="container">
+                            <div className="row">
+                                {items}
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )
+
+            }
+        };
+
+        BoardContent = BoardAlgorithm(documentTypes);
+
         return (
             <div className="container">
                 <Link to="/document_type/addDocumentType" className="btn btn-primary mb-3">
@@ -19,15 +57,7 @@ class DocumentTypeBoard extends Component {
                 </Link>
                 <br />
                 <hr />
-                <div className="container">
-                    <div className="row">
-                    <DocumentTypeItem />
-                    <DocumentTypeItem />
-                    <DocumentTypeItem />
-                        
-                    </div>
-                </div>
-
+                    {BoardContent}
             </div>
         );
     }
