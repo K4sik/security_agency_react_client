@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ERRORS, GET_STATUSES } from "./types";
+import { DELETE_STATUS, GET_ERRORS, GET_STATUSES } from "./types";
 
 export const addStatus = (status, history) => async dispatch => {
     try {
@@ -23,4 +23,15 @@ export const getBacklog = () => async dispatch => {
         type: GET_STATUSES,
         payload: res.data
     })
+};
+
+export const deleteStatus = status_id => async dispatch =>{
+    if(window.confirm(
+        `Are you sure want to delete this status with id ${status_id}? \nThis action cannot be undone. `)){
+        await axios.delete(`http://localhost:8080/api/status/${status_id}`)
+        dispatch({
+            type: DELETE_STATUS,
+            payload: status_id
+        })
+    }
 };

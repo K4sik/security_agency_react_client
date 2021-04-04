@@ -12,6 +12,44 @@ class StatusBoard extends Component {
     }
 
     render() {
+
+        const { statuses } = this.props.statuses;
+
+        let BoardContent;
+        let items = [];
+
+        const BoardAlgorithm = statuses => {
+            if (statuses.length < 1) {
+                return(
+                    <div className="alert alert-info text-center" role="alert">
+                        No Teams on this board
+                    </div>
+                )                
+            } else {
+                const tasks = statuses.map(status => (
+                    <StatusItem key={status.id} status={status} />
+                ));
+
+                for (let i=0; i<tasks.length; i++){
+                    // console.log(tasks[i]);
+                    items.push(tasks[i]);
+                }
+
+                return (
+                    <React.Fragment>
+                        <div className="container">
+                            <div className="row">
+                                {items}
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )
+
+            }
+        };
+
+        BoardContent = BoardAlgorithm(statuses);
+
         return (
             <div className="container">
                 <Link to="/status/addStatus" className="btn btn-primary mb-3">
@@ -19,16 +57,7 @@ class StatusBoard extends Component {
                 </Link>
                 <br />
                 <hr />
-                <div className="container">
-                    <div className="row">
-                        <StatusItem />
-                        <StatusItem />
-                        <StatusItem />
-                        <StatusItem />
-                        <StatusItem />                        
-                    </div>
-                </div>
-
+                {BoardContent}
             </div>
         );
     }
