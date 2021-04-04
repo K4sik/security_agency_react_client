@@ -1,5 +1,8 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { addProduct } from "../../actions/productActions";
 import classnames from "classnames";
 
 class AddProduct extends Component {
@@ -8,10 +11,17 @@ class AddProduct extends Component {
         this.state = {
             name: "",
             price: "",
-            provider: ""
+            provider: "",
+            errors: {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps){
+        if (nextProps.errors) {
+            this.setState({ errors: nextProps.errors });
+        }
     }
 
     onChange(e){
@@ -25,10 +35,12 @@ class AddProduct extends Component {
             price: this.state.price,
             provider: this.state.provider
         };
-        console.log(newProduct);
+        // console.log(newProduct);
+        this.props.addProduct(newProduct, this.props.history);
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <div className="addProduct">
                 <div className="container">
@@ -44,7 +56,7 @@ class AddProduct extends Component {
                                         <input 
                                             type="text" 
                                             className={classnames("form-control form-control-lg", {
-                                            // "is-invalid": errors.name
+                                            "is-invalid": errors.name
                                             })} 
                                             name="name" 
                                             value={this.state.name} 
@@ -52,16 +64,16 @@ class AddProduct extends Component {
                                             onChange={this.onChange} 
                                         />
                                         {
-                                            // errors.name && (
-                                            //     <div className="invalid-feedback">{ errors.name }</div>
-                                            // )
+                                            errors.name && (
+                                                <div className="invalid-feedback">{ errors.name }</div>
+                                            )
                                         }
                                     </div>
                                     <div className="form-group">
                                         <input 
                                             type="text" 
                                             className={classnames("form-control form-control-lg", {
-                                            // "is-invalid": errors.name
+                                            "is-invalid": errors.price
                                             })} 
                                             name="price" 
                                             value={this.state.price} 
@@ -69,16 +81,16 @@ class AddProduct extends Component {
                                             onChange={this.onChange} 
                                         />
                                         {
-                                            // errors.name && (
-                                            //     <div className="invalid-feedback">{ errors.name }</div>
-                                            // )
+                                            errors.price && (
+                                                <div className="invalid-feedback">{ errors.price }</div>
+                                            )
                                         }
                                     </div>
                                     <div className="form-group">
                                         <input 
                                             type="text" 
                                             className={classnames("form-control form-control-lg", {
-                                            // "is-invalid": errors.name
+                                            "is-invalid": errors.provider
                                             })} 
                                             name="provider" 
                                             value={this.state.provider} 
@@ -86,24 +98,12 @@ class AddProduct extends Component {
                                             onChange={this.onChange} 
                                         />
                                         {
-                                            // errors.name && (
-                                            //     <div className="invalid-feedback">{ errors.name }</div>
-                                            // )
+                                            errors.provider && (
+                                                <div className="invalid-feedback">{ errors.provider }</div>
+                                            )
                                         }
                                     </div>
                                 </div>
-                                {
-                                // <div className="form-group">
-                                //     <textarea 
-                                //         className="form-control form-control-lg" 
-                                //         name="description" 
-                                //         value={this.state.description} 
-                                //         placeholder="Description" 
-                                //         onChange={this.onChange} 
-                                //         >
-                                //     </textarea>
-                                // </div>
-                                }
                                 <input type="submit" className="btn btn-primary btn-block mt-4" />
                             </form>
                         </div>
@@ -114,4 +114,13 @@ class AddProduct extends Component {
     }
 }
 
-export default AddProduct
+AddProduct.propTypes = {
+    addProduct: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, { addProduct }) (AddProduct);
