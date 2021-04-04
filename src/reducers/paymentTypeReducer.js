@@ -17,7 +17,7 @@ export default function anonymous(state = initialState, action){
                 return{
                     ...state,
                     paymentTypes: state.paymentTypes.filter(
-                        paymentTypes => paymentTypes.id !== action.payload
+                        paymentType => paymentType.id !== action.payload
                     )
                 };
         
