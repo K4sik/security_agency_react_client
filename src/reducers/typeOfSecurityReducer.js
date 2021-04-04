@@ -1,4 +1,4 @@
-import { GET_TYPESOFSECURITY } from "../actions/types";
+import { DELETE_TYPEOFSECURITY, GET_TYPESOFSECURITY } from "../actions/types";
 
 const initialState = {
     typesOfSecurity: []
@@ -11,6 +11,14 @@ export default function anonymous(state = initialState, action){
             return{
                 ...state,
                 typesOfSecurity: action.payload
+            };
+
+        case DELETE_TYPEOFSECURITY:
+            return{
+                ...state,
+                typesOfSecurity: state.typesOfSecurity.filter(
+                    typeOfSecurity => typeOfSecurity.id !== action.payload
+                )
             };
         
         default:

@@ -1,29 +1,39 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { deleteTypeOfSecurity } from "../../actions/typeOfSecurityActions";
 
 var divStyle = {
     margin:"6px"
 }
 
 class TypeOfSecurityItem extends Component {
+
+    onDelete(type_of_security_id){
+        this.props.deleteTypeOfSecurity(type_of_security_id);
+    }
+
     render() {
+        const { typeOfSecurity } = this.props;
         return (
             <div style = { divStyle }>
                 <div className="card mb-1 bg-light">
 
                     <div className="card-header text-primary">
-                        ID: type_of_security_id
+                        ID: {typeOfSecurity.id}
                     </div>
                     <div className="card-body bg-light">
-                        <h5 className="card-title">type_of_security name</h5>
+                        <h5 className="card-title">{typeOfSecurity.name}</h5>
                         <p className="card-text text-truncate ">
-                            description
+                            {typeOfSecurity.description}
                         </p>
                         <Link to="" className="btn btn-primary">
                             View / Update
                         </Link>
 
-                        <button className="btn btn-danger ml-4">
+                        <button className="btn btn-danger ml-4"
+                        onClick={this.onDelete.bind(this, typeOfSecurity.id)}>
                             Delete
                         </button>
                     </div>
@@ -33,4 +43,8 @@ class TypeOfSecurityItem extends Component {
     }
 }
 
-export default TypeOfSecurityItem
+TypeOfSecurityItem.propTypes = {
+    deleteTypeOfSecurity: PropTypes.func.isRequired
+};
+
+export default connect(null, { deleteTypeOfSecurity }) (TypeOfSecurityItem);
