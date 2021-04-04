@@ -12,6 +12,44 @@ class PaymentTypeBoard extends Component {
     }
 
     render() {
+
+        const { paymentTypes } = this.props.paymentTypes;
+
+        let BoardContent;
+        let items = [];
+
+        const BoardAlgorithm = paymentTypes => {
+            if (paymentTypes.length < 1) {
+                return(
+                    <div className="alert alert-info text-center" role="alert">
+                        No Payment Types on this board
+                    </div>
+                )                
+            } else {
+                const tasks = paymentTypes.map(paymentType => (
+                    <PaymentTypeItem key={paymentType.id} paymentType={paymentType} />
+                ));
+
+                for (let i=0; i<tasks.length; i++){
+                    // console.log(tasks[i]);
+                    items.push(tasks[i]);
+                }
+
+                return (
+                    <React.Fragment>
+                        <div className="container">
+                            <div className="row">
+                                {items}
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )
+
+            }
+        };
+
+        BoardContent = BoardAlgorithm(paymentTypes);
+
         return (
             <div className="container">
                 <Link to="/payment_type/addPaymentType" className="btn btn-primary mb-3">
@@ -19,16 +57,7 @@ class PaymentTypeBoard extends Component {
                 </Link>
                 <br />
                 <hr />
-                <div className="container">
-                    <div className="row">
-                        <PaymentTypeItem />
-                        <PaymentTypeItem />
-                        <PaymentTypeItem />
-
-                        
-                    </div>
-                </div>
-
+                    {BoardContent}
             </div>
         );
     }
