@@ -12,6 +12,44 @@ class ClientTypeBoard extends Component {
     }
 
     render() {
+
+        const { clientTypes } = this.props.clientTypes;
+
+        let BoardContent;
+        let items = [];
+
+        const BoardAlgorithm = clientTypes => {
+            if (clientTypes.length < 1) {
+                return(
+                    <div className="alert alert-info text-center" role="alert">
+                        No Client Types on this board
+                    </div>
+                )                
+            } else {
+                const tasks = clientTypes.map(clientType => (
+                    <ClientTypeItem key={clientType.id} clientType={clientType} />
+                ));
+
+                for (let i=0; i<tasks.length; i++){
+                    // console.log(tasks[i]);
+                    items.push(tasks[i]);
+                }
+
+                return (
+                    <React.Fragment>
+                        <div className="container">
+                            <div className="row">
+                                {items}
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )
+
+            }
+        };
+
+        BoardContent = BoardAlgorithm(clientTypes);
+
         return (
             <div className="container">
                 <Link to="/client_type/addClientType" className="btn btn-primary mb-3">
@@ -21,9 +59,7 @@ class ClientTypeBoard extends Component {
                 <hr />
                 <div className="container">
                     <div className="row">
-                        <ClientTypeItem />
-                        <ClientTypeItem />
-                        <ClientTypeItem />
+                        {BoardContent}
                     </div>
                 </div>
             </div>
@@ -37,7 +73,7 @@ ClientTypeBoard.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    clientTypes: state.position
+    clientTypes: state.clientType
 });
 
 export default connect(mapStateToProps, { getBacklog }) (ClientTypeBoard);

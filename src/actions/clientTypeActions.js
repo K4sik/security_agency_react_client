@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_CLIENTTYPES, GET_ERRORS } from "./types";
+import { DELETE_CLIENTTYPE, GET_CLIENTTYPES, GET_ERRORS } from "./types";
 
 export const addClientType = (client_type, history) => async dispatch => {
     try {
@@ -23,4 +23,15 @@ export const getBacklog = () => async dispatch => {
         type: GET_CLIENTTYPES,
         payload: res.data
     })
+};
+
+export const deleteClientType = client_type_id => async dispatch =>{
+    if(window.confirm(
+        `Are you sure want to delete this Client Type with id ${client_type_id}? \nThis action cannot be undone. `)){
+        await axios.delete(`http://localhost:8080/api/client_type/${client_type_id}`)
+        dispatch({
+            type: DELETE_CLIENTTYPE,
+            payload: client_type_id
+        })
+    }
 };
