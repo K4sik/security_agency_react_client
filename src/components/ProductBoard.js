@@ -12,6 +12,43 @@ class ProductBoard extends Component {
     }
 
     render() {
+
+        const { products } = this.props.products;
+
+        let BoardContent;
+        let items = [];
+
+        const BoardAlgorithm = products => {
+            if (products.length < 1) {
+                return(
+                    <div className="alert alert-info text-center" role="alert">
+                        No Products on this board
+                    </div>
+                )                
+            } else {
+                const tasks = products.map(product => (
+                    <ProductItem key={product.id} product={product} />
+                ));
+
+                for (let i=0; i<tasks.length; i++){
+                    // console.log(tasks[i]);
+                    items.push(tasks[i]);
+                }
+
+                return (
+                    <React.Fragment>
+                        <div className="container">
+                            <div className="row">
+                                {items}
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )
+
+            }
+        };
+
+        BoardContent = BoardAlgorithm(products);
         return (
             <div className="container">
                 <Link to="/product/addProduct" className="btn btn-primary mb-3">
@@ -21,9 +58,7 @@ class ProductBoard extends Component {
                 <hr />
                 <div className="container">
                     <div className="row">
-                        <ProductItem />
-                        <ProductItem />
-                        <ProductItem />                        
+                        {BoardContent}                     
                     </div>
                 </div>
 

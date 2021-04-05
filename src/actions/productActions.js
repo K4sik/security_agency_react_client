@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ERRORS, GET_PRODUCTS } from "./types";
+import { DELETE_PRODUCT, GET_ERRORS, GET_PRODUCTS } from "./types";
 
 export const addProduct = (product, history) => async dispatch => {
     try {
@@ -23,4 +23,15 @@ export const getBacklog = () => async dispatch => {
         type: GET_PRODUCTS,
         payload: res.data
     })
+};
+
+export const deleteProduct = product_id => async dispatch =>{
+    if(window.confirm(
+        `Are you sure want to delete this Product with id ${product_id}? \nThis action cannot be undone. `)){
+        await axios.delete(`http://localhost:8080/api/product/${product_id}`)
+        dispatch({
+            type: DELETE_PRODUCT,
+            payload: product_id
+        })
+    }
 };
