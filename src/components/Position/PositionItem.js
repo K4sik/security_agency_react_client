@@ -27,7 +27,7 @@ class PositionItem extends Component {
                         <p className="card-text text-truncate ">
                             {position.description}
                         </p>
-                        <Link to="/"className="btn btn-primary">
+                        <Link to={`/position/updatePosition/${position.id}`} className="btn btn-primary">
                             View / Update
                         </Link>
 

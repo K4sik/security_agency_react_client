@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_POSITION, GET_ERRORS, GET_POSITIONS } from "./types";
+import { DELETE_POSITION, GET_ERRORS, GET_POSITION, GET_POSITIONS } from "./types";
 
 export const addPosition = (position, history) => async dispatch => {
     try {
@@ -35,3 +35,15 @@ export const deletePosition = position_id => async dispatch =>{
         })
     }
 };
+
+export const getPosition = (position_id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/position/${position_id}`)
+        dispatch({
+            type: GET_POSITION,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/position");
+    }
+}

@@ -1,7 +1,8 @@
-import { GET_POSITIONS, DELETE_POSITION } from "../actions/types";
+import { GET_POSITIONS, DELETE_POSITION, GET_POSITION } from "../actions/types";
 
 const initialState = {
-    positions: []
+    positions: [],
+    position: {}
 }
 
 export default function anonymous(state = initialState, action){
@@ -11,6 +12,12 @@ export default function anonymous(state = initialState, action){
             return{
                 ...state,
                 positions: action.payload
+            };
+
+        case GET_POSITION:
+            return{
+                ...state,
+                position: action.payload
             };
 
         case DELETE_POSITION:
