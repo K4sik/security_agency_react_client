@@ -28,7 +28,7 @@ class StatusItem extends Component {
                         <p className="card-text text-truncate ">
                             {status.description}
                         </p>
-                        <Link to="" className="btn btn-primary">
+                        <Link to={`/status/updateStatus/${status.id}`} className="btn btn-primary">
                             View / Update
                         </Link>
 

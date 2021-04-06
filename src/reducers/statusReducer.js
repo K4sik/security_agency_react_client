@@ -1,7 +1,8 @@
-import { DELETE_STATUS, GET_STATUSES } from "../actions/types";
+import { DELETE_STATUS, GET_STATUSES, GET_STATUS } from "../actions/types";
 
 const initialState = {
-    statuses: []
+    statuses: [],
+    status: {}
 }
 
 export default function anonymous(state = initialState, action){
@@ -11,6 +12,12 @@ export default function anonymous(state = initialState, action){
             return{
                 ...state,
                 statuses: action.payload
+            };
+        
+        case GET_STATUS:
+            return{
+                ...state,
+                status: action.payload
             };
 
         case DELETE_STATUS:

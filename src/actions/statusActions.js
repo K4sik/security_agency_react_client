@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_STATUS, GET_ERRORS, GET_STATUSES } from "./types";
+import { DELETE_STATUS, GET_ERRORS, GET_STATUS, GET_STATUSES } from "./types";
 
 export const addStatus = (status, history) => async dispatch => {
     try {
@@ -35,3 +35,15 @@ export const deleteStatus = status_id => async dispatch =>{
         })
     }
 };
+
+export const getStatus = (status_id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/status/${status_id}`)
+        dispatch({
+            type: GET_STATUS,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/status");
+    }
+}
