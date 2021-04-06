@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_CLIENTTYPE, GET_CLIENTTYPES, GET_ERRORS } from "./types";
+import { DELETE_CLIENTTYPE, GET_CLIENTTYPE, GET_CLIENTTYPES, GET_ERRORS } from "./types";
 
 export const addClientType = (client_type, history) => async dispatch => {
     try {
@@ -35,3 +35,15 @@ export const deleteClientType = client_type_id => async dispatch =>{
         })
     }
 };
+
+export const getClientType = (client_type_id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/client_type/${client_type_id}`)
+        dispatch({
+            type: GET_CLIENTTYPE,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/client_type");
+    }
+}

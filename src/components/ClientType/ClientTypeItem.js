@@ -28,7 +28,7 @@ class ClientTypeItem extends Component {
                         <p className="card-text text-truncate ">
                             {clientType.description}
                         </p>
-                        <Link to="" className="btn btn-primary">
+                        <Link to={`/client_type/updateClientType/${clientType.id}`} className="btn btn-primary">
                             View / Update
                         </Link>
 
