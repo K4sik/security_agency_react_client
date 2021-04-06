@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_DOCUMENTTYPE, GET_DOCUMENTTYPES, GET_ERRORS } from "./types";
+import { DELETE_DOCUMENTTYPE, GET_DOCUMENTTYPE, GET_DOCUMENTTYPES, GET_ERRORS } from "./types";
 
 export const addDocumentType = (document_type, history) => async dispatch => {
     try {
@@ -35,3 +35,15 @@ export const deleteDocumentType = document_type_id => async dispatch =>{
         })
     }
 };
+
+export const getDocumentType = (document_type_id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/document_type/${document_type_id}`)
+        dispatch({
+            type: GET_DOCUMENTTYPE,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/document_type");
+    }
+}

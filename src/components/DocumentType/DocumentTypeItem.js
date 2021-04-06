@@ -27,7 +27,7 @@ class DocumentTypeItem extends Component {
                         <p className="card-text text-truncate ">
                             {documentType.description}
                         </p>
-                        <Link to="" className="btn btn-primary">
+                        <Link to={`/document_type/updateDocumentType/${documentType.id}`} className="btn btn-primary">
                             View / Update
                         </Link>         
                         <button className="btn btn-danger ml-4"
