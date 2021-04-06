@@ -6,7 +6,7 @@ export default function Navbar() {
         <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
         <div className="container">
             <Link to="/" className="navbar-brand" >
-                Project Task Tool
+                Security Agentcy
             </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                 <span className="navbar-toggler-icon" />
