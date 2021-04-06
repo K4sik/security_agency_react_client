@@ -1,7 +1,8 @@
-import { DELETE_PRODUCT, GET_PRODUCTS } from "../actions/types";
+import { DELETE_PRODUCT, GET_PRODUCTS, GET_PRODUCT } from "../actions/types";
 
 const initialState = {
-    products: []
+    products: [],
+    product: {}
 }
 
 export default function anonymous(state = initialState, action){
@@ -11,6 +12,12 @@ export default function anonymous(state = initialState, action){
             return{
                 ...state,
                 products: action.payload
+            };
+            
+        case GET_PRODUCT:
+            return{
+                ...state,
+                product: action.payload
             };
 
         case DELETE_PRODUCT:

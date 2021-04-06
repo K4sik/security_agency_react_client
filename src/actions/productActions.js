@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_PRODUCT, GET_ERRORS, GET_PRODUCTS } from "./types";
+import { DELETE_PRODUCT, GET_ERRORS, GET_PRODUCT, GET_PRODUCTS } from "./types";
 
 export const addProduct = (product, history) => async dispatch => {
     try {
@@ -35,3 +35,15 @@ export const deleteProduct = product_id => async dispatch =>{
         })
     }
 };
+
+export const getProduct = (product_id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/product/${product_id}`)
+        dispatch({
+            type: GET_PRODUCT,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/product");
+    }
+}

@@ -31,7 +31,7 @@ class ProductItem extends Component {
                         <p className="card-text text-truncate ">
                             {product.provider}
                         </p>
-                        <Link to="" className="btn btn-primary">
+                        <Link to={`/product/updateProduct/${product.id}`} className="btn btn-primary">
                             View / Update
                         </Link>
 
