@@ -1,7 +1,8 @@
-import { DELETE_TYPEOFSECURITY, GET_TYPESOFSECURITY } from "../actions/types";
+import { GET_TYPEOFSECURITY, DELETE_TYPEOFSECURITY, GET_TYPESOFSECURITY } from "../actions/types";
 
 const initialState = {
-    typesOfSecurity: []
+    typesOfSecurity: [],
+    typeOfSecurity: {}
 }
 
 export default function anonymous(state = initialState, action){
@@ -11,6 +12,12 @@ export default function anonymous(state = initialState, action){
             return{
                 ...state,
                 typesOfSecurity: action.payload
+            };
+
+        case GET_TYPEOFSECURITY:
+            return{
+                ...state,
+                typeOfSecurity: action.payload
             };
 
         case DELETE_TYPEOFSECURITY:

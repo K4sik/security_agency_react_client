@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_TYPEOFSECURITY, GET_ERRORS, GET_TYPESOFSECURITY } from "./types";
+import { DELETE_TYPEOFSECURITY, GET_ERRORS, GET_TYPEOFSECURITY, GET_TYPESOFSECURITY } from "./types";
 
 export const addTypeOfSecurity = (type_of_security, history) => async dispatch => {
     try {
@@ -35,3 +35,15 @@ export const deleteTypeOfSecurity = type_of_security_id => async dispatch =>{
         })
     }
 };
+
+export const getTypeOfSecurity = (type_of_security_id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/type_of_security/${type_of_security_id}`)
+        dispatch({
+            type: GET_TYPEOFSECURITY,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/type_of_security");
+    }
+}

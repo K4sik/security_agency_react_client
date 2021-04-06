@@ -28,7 +28,7 @@ class TypeOfSecurityItem extends Component {
                         <p className="card-text text-truncate ">
                             {typeOfSecurity.description}
                         </p>
-                        <Link to="" className="btn btn-primary">
+                        <Link to={`/type_of_security/updateTypeOfSecurity/${typeOfSecurity.id}`} className="btn btn-primary">
                             View / Update
                         </Link>
 
