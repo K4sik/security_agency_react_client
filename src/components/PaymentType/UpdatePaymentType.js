@@ -1,9 +1,65 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from "classnames";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getPaymentType, addPaymentType } from "../../actions/paymentTypeActions";
 
 class UpdatePaymentType extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            id: "",
+            name: "",
+            description: "",
+            errors: {}
+        }
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps){
+
+        if(nextProps.errors){
+            this.setState({ errors: nextProps.errors });
+        }
+
+        const {
+            id,
+            name,
+            description
+        } = nextProps.paymentType;
+
+        this.setState({
+            id,
+            name,
+            description
+        });
+    }
+
+    componentDidMount(){
+        const { payment_type_id } = this.props.match.params;
+        this.props.getPaymentType(payment_type_id);
+    }
+
+    onSubmit(e){
+        e.preventDefault();
+        const updatePaymentType = {
+            id: this.state.id,
+            name: this.state.name,
+            description: this.state.description
+        }
+
+        this.props.addPaymentType(updatePaymentType, this.props.history);
+    }
+
+    onChange(e){
+        this.setState({[e.target.name]:e.target.value})
+    }
+
     render() {
+        const { errors } = this.state;
         return (
             <div className="addPaymentType">
                 <div className="container">
@@ -18,26 +74,26 @@ class UpdatePaymentType extends Component {
                                     <input 
                                         type="text" 
                                         className={classnames("form-control form-control-lg", {
-                                           // "is-invalid": errors.name
+                                           "is-invalid": errors.name
                                         })} 
                                         name="name" 
-                                        // value={this.state.name} 
+                                        value={this.state.name} 
                                         placeholder="Payment Type name" 
-                                        // onChange={this.onChange} 
+                                        onChange={this.onChange} 
                                     />
                                     {
-                                        // errors.name && (
-                                        //     <div className="invalid-feedback">{ errors.name }</div>
-                                        // )
+                                        errors.name && (
+                                            <div className="invalid-feedback">{ errors.name }</div>
+                                        )
                                     }
                                 </div>
                                 <div className="form-group">
                                     <textarea 
                                         className="form-control form-control-lg" 
                                         name="description" 
-                                        // value={this.state.description} 
+                                        value={this.state.description} 
                                         placeholder="Description" 
-                                        // onChange={this.onChange} 
+                                        onChange={this.onChange} 
                                         >
                                     </textarea>
                                 </div>
@@ -51,4 +107,16 @@ class UpdatePaymentType extends Component {
     }
 }
 
-export default UpdatePaymentType
+UpdatePaymentType.propTypes = {
+    paymentType: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired,
+    getPaymentType: PropTypes.func.isRequired,
+    addPaymentType: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+    paymentType: state.paymentType.paymentType,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, { getPaymentType, addPaymentType }) (UpdatePaymentType);

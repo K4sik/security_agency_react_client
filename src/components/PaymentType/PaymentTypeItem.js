@@ -28,7 +28,7 @@ class PaymentTypeItem extends Component {
                         <p className="card-text text-truncate ">
                             {paymentType.description}
                         </p>
-                        <Link to="" className="btn btn-primary">
+                        <Link to={`/payment_type/updatePaymentType/${paymentType.id}`} className="btn btn-primary">
                             View / Update
                         </Link>
 
