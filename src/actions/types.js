@@ -8,6 +8,9 @@ export const GET_POSITIONS = "GET_POSITIONS";
 export const GET_POSITION = "GET_POSITION";
 export const DELETE_POSITION = "DELETE_POSITION";
 
+export const GET_EMPLOYEES = "GET_EMPLOYEES";
+export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE";
+
 export const GET_STATUSES = "GET_STATUSES";
 export const GET_STATUS = "GET_STATUS";
 export const DELETE_STATUS = "DELETE_STATUS";

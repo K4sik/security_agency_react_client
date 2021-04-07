@@ -8,12 +8,14 @@ import statusReducer from "./statusReducer";
 import teamReducer from "./teamReducer";
 import typeOfSecurityReducer from "./typeOfSecurityReducer";
 import productReducer from "./productReducer";
+import employeeReducer from "./employeeReducer";
 
 export default combineReducers ({
    //
     errors: errorsReducer,
     team: teamReducer,
     position: positionReducer,
+    employee: employeeReducer,
     status: statusReducer,
     typeOfSecurity: typeOfSecurityReducer,
     paymentType: paymentTypeReducer,

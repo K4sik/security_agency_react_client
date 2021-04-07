@@ -29,6 +29,9 @@ import UpdateTypeOfSecurity from "./components/TypeOfSecurity/UpdateTypeOfSecuri
 import ProductBoard from "./components/ProductBoard";
 import AddProduct from "./components/Product/AddProduct";
 import UpdateProduct from "./components/Product/UpdateProduct";
+import EmployeeBoard from "./components/EmployeeBoard";
+import AddEmployee from "./components/Employee/AddEmployee";
+import UpdateEmployee from "./components/Employee/UpdateEmployee";
 
 class App extends Component {
   render(){
@@ -40,6 +43,10 @@ class App extends Component {
             <Route exact path="/team" component={TeamBoard} />
             <Route exact path="/team/addTeam" component={AddTeam} />
             <Route exact path="/team/updateTeam/:team_id" component={UpdateTeam} />
+
+            <Route exact path="/employee" component={EmployeeBoard} />
+            <Route exact path="/employee/addEmployee" component={AddEmployee} />
+            <Route exact path="/employee/updateEmployee/:employee_id" component={UpdateEmployee} />
 
             <Route exact path="/position" component={PositionBoard} />
             <Route exact path="/position/addPosition" component={AddPosition} />
