@@ -40,6 +40,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
+
             <Route exact path="/team" component={TeamBoard} />
             <Route exact path="/team/addTeam" component={AddTeam} />
             <Route exact path="/team/updateTeam/:team_id" component={UpdateTeam} />
