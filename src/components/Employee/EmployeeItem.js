@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { deleteEmployee } from "../../actions/employeeActions";
 
-var divStyle = {
-    margin:"6px"
-}
-
 class EmployeeItem extends Component {
 
     onDelete(employee_id){
@@ -15,31 +11,26 @@ class EmployeeItem extends Component {
 
     render() {
         const {employee} = this.props;
-    return (
-        <div style = { divStyle }>
-            <div className="card mb-1 bg-light">
-                <div className="card-header text-primary">
-                    ID: {employee.id}
-                </div>
-                <div className="card-body bg-light">
-                    <h5 className="card-title">{employee.first_name}</h5>
-                    <p className="card-text text-truncate ">
-                        some
-                    </p>
-                    <Link to={`/employee/updateEmployee/${employee.id}`} className="btn btn-primary">
-                        View / Update
-                    </Link>
-
-                    <button className="btn btn-danger ml-4" 
-                        onClick={this.onDelete.bind(this, employee.id)}
-                        >
-                        Delete
-                    </button>
-                </div>
-            </div>
-        </div>
         
-    )
+        return (
+            <tr>
+                <td>{employee.id}</td>
+                <td>{employee.first_name}</td>
+                <td>{employee.last_name}</td>
+                <td>{employee.position.name}</td>
+                <td className="button-row">
+                    <Link to={`/employee/updateEmployee/${employee.id}`} className="btn btn-outline-primary" >
+                        <i className="fas fa-edit"></i>
+                    </Link>
+                    <span>      </span>
+                    <button className="btn btn-outline-danger" 
+                        onClick={this.onDelete.bind(this, employee.id)}>
+                        <i className="fas fa-trash"></i>
+                    </button>
+                    
+                </td>
+            </tr>        
+        )
     }
 }
 

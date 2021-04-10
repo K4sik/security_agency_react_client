@@ -4,6 +4,7 @@ import EmployeeItem from "./Employee/EmployeeItem";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getBacklog } from "../actions/employeeActions";
+import { Table } from "react-bootstrap";
 
 class EmployeeBoard extends Component {
     componentDidMount() {
@@ -35,7 +36,32 @@ class EmployeeBoard extends Component {
 
                 return (
                     <React.Fragment>
-                        {items}
+                    <Table striped bordered hover size="sm">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Position</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {items}
+                        </tbody>
+                    </Table>
+
+                        {
+                        //     <div className="table">
+                        //     <div className="thead">
+                        //         <div className="th">#</div>                    
+                        //         <div className="th">#</div>                    
+                        //         <div className="th">#</div>                    
+                        //         <div className="th">#</div>                    
+                        //     </div>
+                        //     {items}    
+                        // </div>
+                    }
                     </React.Fragment>
                 )
 
