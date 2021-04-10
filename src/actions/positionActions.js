@@ -25,6 +25,14 @@ export const getBacklog = () => async dispatch => {
     })
 };
 
+export const getPositionsForEmployee = () => async dispatch => {
+    const res = await axios.get("http://localhost:8080/api/position/all");
+    dispatch({
+        type: GET_POSITIONS,
+        payload: res.data
+    })
+};
+
 export const deletePosition = position_id => async dispatch =>{
     if(window.confirm(
         `Are you sure want to delete this position with id ${position_id}? \nThis action cannot be undone. `)){
