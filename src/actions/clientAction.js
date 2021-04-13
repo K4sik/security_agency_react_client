@@ -1,5 +1,21 @@
 import axios from "axios";
-import { DELETE_CLIENT, GET_CLIENTS } from "./types";
+import { DELETE_CLIENT, GET_CLIENTS, GET_ERRORS } from "./types";
+
+export const addClient = (client, history) => async dispatch => {
+    try {
+        await axios.post("http://localhost:8080/api/client/add", client);
+        history.push("/client");
+        dispatch({
+            type: GET_ERRORS,
+            payload: {}
+        });
+    } catch (error) {
+        dispatch({
+            type: GET_ERRORS,
+            payload: error.response.data
+        });
+    }
+};
 
 export const getClients = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/client/all");

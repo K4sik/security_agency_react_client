@@ -33,6 +33,7 @@ import EmployeeBoard from "./components/EmployeeBoard";
 import AddEmployee from "./components/Employee/AddEmployee";
 import UpdateEmployee from "./components/Employee/UpdateEmployee";
 import ClientBoard from "./components/ClientBoard";
+import AddClient from "./components/Client/AddClient";
 
 class App extends Component {
   render(){
@@ -67,6 +68,7 @@ class App extends Component {
             <Route exact path="/payment_type/updatePaymentType/:payment_type_id" component={UpdatePaymentType} />
 
             <Route exact path="/client" component={ClientBoard} />
+            <Route exact path="/client/addClient" component={AddClient} />
 
             <Route exact path="/status" component={StatusBoard} />
             <Route exact path="/status/addStatus" component={AddStatus} />
