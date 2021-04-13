@@ -1,7 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteClient } from "../../actions/clientAction";
 
 class ClientItem extends Component {
+
+    onDelete(client_id){
+        this.props.deleteClient(client_id);
+    }
+
     render() {
         const {client} = this.props;
         
@@ -17,8 +24,7 @@ class ClientItem extends Component {
                     </Link>
                     <span>      </span>
                     <button className="btn btn-outline-danger" 
-                        // onClick={this.onDelete.bind(this, client.id)}
-                        >
+                        onClick={this.onDelete.bind(this, client.id)}>
                         <i className="fas fa-trash"></i>
                     </button>
                     
@@ -28,4 +34,4 @@ class ClientItem extends Component {
     }
 }
 
-export default ClientItem;
+export default connect(null, { deleteClient }) (ClientItem);

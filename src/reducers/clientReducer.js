@@ -1,4 +1,4 @@
-import { GET_CLIENTS } from "../actions/types";
+import { DELETE_CLIENT, GET_CLIENTS } from "../actions/types";
 
 const initialState = {
     clients: []
@@ -11,6 +11,14 @@ export default function clientReducer(state = initialState, action) {
             return{
                 ...state,
                 clients: action.payload
+            };
+
+        case DELETE_CLIENT:
+            return{
+                ...state,
+                clients: state.clients.filter(
+                    client => client.id !== action.payload
+                )
             };
 
         default:
