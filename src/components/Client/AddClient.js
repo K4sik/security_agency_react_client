@@ -56,7 +56,7 @@ class AddClient extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-                            <Link to="/employee" className="btn btn-light">
+                            <Link to="/client" className="btn btn-light">
                                 Back to Board
                             </Link>
                             <h4 className="display-4 text-center">Add Client</h4>
