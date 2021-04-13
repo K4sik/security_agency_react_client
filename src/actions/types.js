@@ -9,6 +9,7 @@ export const GET_POSITION = "GET_POSITION";
 export const DELETE_POSITION = "DELETE_POSITION";
 
 export const GET_EMPLOYEES = "GET_EMPLOYEES";
+export const GET_EMPLOYEE = "GET_EMPLOYEE";
 export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE";
 
 export const GET_STATUSES = "GET_STATUSES";

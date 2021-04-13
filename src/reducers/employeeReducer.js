@@ -1,7 +1,8 @@
-import { DELETE_EMPLOYEE, GET_EMPLOYEES } from "../actions/types";
+import { DELETE_EMPLOYEE, GET_EMPLOYEES, GET_EMPLOYEE } from "../actions/types";
 
 const initialState = {
-    employees: []
+    employees: [],
+    employee: {}
 }
 
 export default function anonymous(state = initialState, action){
@@ -11,6 +12,12 @@ export default function anonymous(state = initialState, action){
             return{
                 ...state,
                 employees: action.payload
+            };
+
+        case GET_EMPLOYEE:
+            return{
+                ...state,
+                employee: action.payload
             };
 
         case DELETE_EMPLOYEE:
