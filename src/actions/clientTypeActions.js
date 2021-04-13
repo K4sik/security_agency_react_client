@@ -17,7 +17,7 @@ export const addClientType = (client_type, history) => async dispatch => {
     }
 };
 
-export const getBacklog = () => async dispatch => {
+export const getClientTypes = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/client_type/all");
     dispatch({
         type: GET_CLIENTTYPES,

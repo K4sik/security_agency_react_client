@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import EmployeeItem from "./Employee/EmployeeItem";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getBacklog } from "../actions/employeeActions";
+import { getEmployees } from "../actions/employeeActions";
 import { Table } from "react-bootstrap";
 
 class EmployeeBoard extends Component {
     componentDidMount() {
-        this.props.getBacklog();
+        this.props.getEmployees();
     }
     render() {
 
@@ -50,18 +50,6 @@ class EmployeeBoard extends Component {
                             {items}
                         </tbody>
                     </Table>
-
-                        {
-                        //     <div className="table">
-                        //     <div className="thead">
-                        //         <div className="th">#</div>                    
-                        //         <div className="th">#</div>                    
-                        //         <div className="th">#</div>                    
-                        //         <div className="th">#</div>                    
-                        //     </div>
-                        //     {items}    
-                        // </div>
-                    }
                     </React.Fragment>
                 )
 
@@ -84,7 +72,7 @@ class EmployeeBoard extends Component {
 }
 
 EmployeeBoard.propTypes = {
-    getBacklog: PropTypes.func.isRequired,
+    getEmployees: PropTypes.func.isRequired,
     employees: PropTypes.object.isRequired
 }
 
@@ -92,4 +80,4 @@ const mapStateToProps = state => ({
     employees: state.employee
 });
 
-export default connect(mapStateToProps, { getBacklog }) (EmployeeBoard);
+export default connect(mapStateToProps, { getEmployees }) (EmployeeBoard);

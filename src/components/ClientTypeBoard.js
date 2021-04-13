@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import ClientTypeItem from './ClientType/ClientTypeItem';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getBacklog } from '../actions/clientTypeActions'
+import { getClientTypes } from '../actions/clientTypeActions'
 
 class ClientTypeBoard extends Component {
 
     componentDidMount(){
-        this.props.getBacklog();
+        this.props.getClientTypes();
     }
 
     render() {
@@ -68,7 +68,7 @@ class ClientTypeBoard extends Component {
 }
 
 ClientTypeBoard.propTypes = {
-    getBacklog: PropTypes.func.isRequired,
+    getClientTypes: PropTypes.func.isRequired,
     clientTypes: PropTypes.object.isRequired
 };
 
@@ -76,4 +76,4 @@ const mapStateToProps = state => ({
     clientTypes: state.clientType
 });
 
-export default connect(mapStateToProps, { getBacklog }) (ClientTypeBoard);
+export default connect(mapStateToProps, { getClientTypes }) (ClientTypeBoard);

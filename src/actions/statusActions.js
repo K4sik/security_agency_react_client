@@ -17,7 +17,7 @@ export const addStatus = (status, history) => async dispatch => {
     }
 };
 
-export const getBacklog = () => async dispatch => {
+export const getStatuses = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/status/all");
     dispatch({
         type: GET_STATUSES,

@@ -17,15 +17,7 @@ export const addPosition = (position, history) => async dispatch => {
     }
 };
 
-export const getBacklog = () => async dispatch => {
-    const res = await axios.get("http://localhost:8080/api/position/all");
-    dispatch({
-        type: GET_POSITIONS,
-        payload: res.data
-    })
-};
-
-export const getPositionsForEmployee = () => async dispatch => {
+export const getPositions = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/position/all");
     dispatch({
         type: GET_POSITIONS,

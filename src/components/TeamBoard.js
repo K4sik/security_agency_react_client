@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import TeamItem from './Team/TeamItem';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getBacklog } from "../actions/teamActions";
+import { getTeams } from "../actions/teamActions";
 
 class TeamBoard extends Component {
     componentDidMount() {
-        this.props.getBacklog();
+        this.props.getTeams();
     }
     render() {
 
@@ -62,7 +62,7 @@ class TeamBoard extends Component {
 }
 
 TeamBoard.propTypes = {
-    getBacklog: PropTypes.func.isRequired,
+    getTeams: PropTypes.func.isRequired,
     teams: PropTypes.object.isRequired
 }
 
@@ -70,4 +70,4 @@ const mapStateToProps = state => ({
     teams: state.team
 });
 
-export default connect(mapStateToProps, {getBacklog}) (TeamBoard)
+export default connect(mapStateToProps, {getTeams}) (TeamBoard)

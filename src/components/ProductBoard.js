@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import ProductItem from './Product/ProductItem';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getBacklog } from "../actions/productActions";
+import { getProducts } from "../actions/productActions";
 
 class ProductBoard extends Component {
 
     componentDidMount(){
-        this.props.getBacklog();
+        this.props.getProducts();
     }
 
     render() {
@@ -68,7 +68,7 @@ class ProductBoard extends Component {
 }
 
 ProductBoard.propTypes = {
-    getBacklog: PropTypes.func.isRequired,
+    getProducts: PropTypes.func.isRequired,
     products: PropTypes.object.isRequired
 };
 
@@ -76,4 +76,4 @@ const mapStateToProps = state => ({
     products: state.product
 });
 
-export default connect(mapStateToProps, { getBacklog }) (ProductBoard);
+export default connect(mapStateToProps, { getProducts }) (ProductBoard);

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import PositionItem from './Position/PositionItem';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getBacklog } from '../actions/positionActions'
+import { getPositions } from '../actions/positionActions'
 
 class PositionBoard extends Component {
 
     componentDidMount(){
-        this.props.getBacklog();
+        this.props.getPositions();
     }
 
     render() {
@@ -71,4 +71,4 @@ const mapStateToProps = state => ({
     positions: state.position
 });
 
-export default connect(mapStateToProps, { getBacklog }) (PositionBoard);
+export default connect(mapStateToProps, { getPositions }) (PositionBoard);

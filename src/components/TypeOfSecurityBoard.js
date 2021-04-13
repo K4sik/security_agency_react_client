@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import TypeOfSecurityItem from './TypeOfSecurity/TypeOfSecurityItem';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-import { getBacklog } from "../actions/typeOfSecurityActions";
+import { getTypesOfSecurity } from "../actions/typeOfSecurityActions";
 
 class TypeOfSecurityBoard extends Component {
 
     componentDidMount(){
-        this.props.getBacklog();
+        this.props.getTypesOfSecurity();
     }
 
     render() {
@@ -64,7 +64,7 @@ class TypeOfSecurityBoard extends Component {
 }
 
 TypeOfSecurityBoard.propTypes = {
-    getBacklog: PropTypes.func.isRequired,
+    getTypesOfSecurity: PropTypes.func.isRequired,
     typesOfSecurity: PropTypes.object.isRequired
 };
 
@@ -72,4 +72,4 @@ const mapStateToProps = state => ({
     typesOfSecurity: state.typeOfSecurity
 });
 
-export default connect(mapStateToProps, { getBacklog }) (TypeOfSecurityBoard);
+export default connect(mapStateToProps, { getTypesOfSecurity }) (TypeOfSecurityBoard);

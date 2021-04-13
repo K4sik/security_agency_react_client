@@ -17,7 +17,7 @@ export const addProduct = (product, history) => async dispatch => {
     }
 };
 
-export const getBacklog = () => async dispatch => {
+export const getProducts = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/product/all");
     dispatch({
         type: GET_PRODUCTS,

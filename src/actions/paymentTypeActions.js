@@ -17,7 +17,7 @@ export const addPaymentType = (payment_type, history) => async dispatch => {
     }
 };
 
-export const getBacklog = () => async dispatch => {
+export const getPaymentTypes = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/payment_type/all");
     dispatch({
         type: GET_PAYMENTTYPES,

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import PaymentTypeItem from './PaymentType/PaymentTypeItem';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-import { getBacklog } from '../actions/paymentTypeActions'
+import { getPaymentTypes } from '../actions/paymentTypeActions'
 
 class PaymentTypeBoard extends Component {
     
     componentDidMount(){
-        this.props.getBacklog();
+        this.props.getPaymentTypes();
     }
 
     render() {
@@ -64,7 +64,7 @@ class PaymentTypeBoard extends Component {
 }
 
 PaymentTypeBoard.propTypes = {
-    getBacklog: PropTypes.func.isRequired,
+    getPaymentTypes: PropTypes.func.isRequired,
     paymentTypes: PropTypes.object.isRequired
 };
 
@@ -72,4 +72,4 @@ const mapStateToProps = state => ({
     paymentTypes: state.paymentType
 });
 
-export default connect(mapStateToProps, { getBacklog }) (PaymentTypeBoard);
+export default connect(mapStateToProps, { getPaymentTypes }) (PaymentTypeBoard);

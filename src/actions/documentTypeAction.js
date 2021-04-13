@@ -17,7 +17,7 @@ export const addDocumentType = (document_type, history) => async dispatch => {
     }
 };
 
-export const getBacklog = () => async dispatch => {
+export const getDocumentTypes = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/document_type/all");
     dispatch({
         type: GET_DOCUMENTTYPES,

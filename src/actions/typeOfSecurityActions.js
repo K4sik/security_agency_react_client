@@ -17,7 +17,7 @@ export const addTypeOfSecurity = (type_of_security, history) => async dispatch =
     }
 };
 
-export const getBacklog = () => async dispatch => {
+export const getTypesOfSecurity = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/type_of_security/all");
     dispatch({
         type: GET_TYPESOFSECURITY,

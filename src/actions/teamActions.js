@@ -17,7 +17,7 @@ export const addTeam = (team, history) => async dispatch => {
     }
 };
 
-export const getBacklog = () => async dispatch => {
+export const getTeams = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/team/all");
     dispatch({
         type: GET_TEAMS,

@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { addEmployee } from "../../actions/employeeActions";
-import { getBacklog } from "../../actions/teamActions";
-import { getPositionsForEmployee } from "../../actions/positionActions";
+import { getTeams } from "../../actions/teamActions";
+import { getPositions } from "../../actions/positionActions";
 
 class AddEmployee extends Component {
 
@@ -50,8 +50,8 @@ class AddEmployee extends Component {
 
 
     componentDidMount() {
-        this.props.getBacklog();
-        this.props.getPositionsForEmployee();
+        this.props.getTeams();
+        this.props.getPositions();
     } 
     
     
@@ -185,4 +185,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { addEmployee, getBacklog, getPositionsForEmployee }) (AddEmployee);
+export default connect(mapStateToProps, { addEmployee, getTeams, getPositions }) (AddEmployee);
