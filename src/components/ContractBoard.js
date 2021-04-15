@@ -60,8 +60,8 @@ class ContractBoard extends Component {
 
         return (
             <div className="container">
-            <Link to="/employee/addEmployee" className="btn btn-primary mb-3">
-                <i className="fas fa-plus-circle"> Create new Employee</i>
+            <Link to="/contract/addContract" className="btn btn-primary mb-3">
+                <i className="fas fa-plus-circle"> Create new Contract</i>
             </Link>
             <br />
             <hr />            
