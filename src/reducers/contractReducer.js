@@ -1,4 +1,4 @@
-import { GET_CONTRACTS } from "../actions/types";
+import { DELETE_CONTRACT, GET_CONTRACTS } from "../actions/types";
 
 const initialState = {
     contracts: []
@@ -11,6 +11,14 @@ export default function contractReducer(state = initialState, action) {
             return{
                 ...state,
                 contracts: action.payload
+            };
+
+        case DELETE_CONTRACT:
+            return{
+                ...state,
+                contracts: state.contracts.filter(
+                    contract => contract.id !== action.payload
+                )
             };
         
         default:
