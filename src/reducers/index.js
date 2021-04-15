@@ -10,7 +10,7 @@ import teamReducer from "./teamReducer";
 import typeOfSecurityReducer from "./typeOfSecurityReducer";
 import productReducer from "./productReducer";
 import employeeReducer from "./employeeReducer";
-
+import documentReducer from "./documentReducer";
 export default combineReducers ({
    //
     errors: errorsReducer,
@@ -21,6 +21,7 @@ export default combineReducers ({
     typeOfSecurity: typeOfSecurityReducer,
     paymentType: paymentTypeReducer,
     documentType: documentTypeReducer,
+    document: documentReducer,
     clientType: clientTypeReducer,
     client: clientReducer,
     product: productReducer

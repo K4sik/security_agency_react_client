@@ -34,6 +34,8 @@ import AddEmployee from "./components/Employee/AddEmployee";
 import UpdateEmployee from "./components/Employee/UpdateEmployee";
 import ClientBoard from "./components/ClientBoard";
 import AddClient from "./components/Client/AddClient";
+import DocumentBoard from "./components/DocumentBoard";
+import AddDocument from "./components/Document/AddDocument";
 
 class App extends Component {
   render(){
@@ -59,6 +61,9 @@ class App extends Component {
             <Route exact path="/document_type/addDocumentType" component={AddDocumentType} />
             <Route exact path="/document_type/updateDocumentType/:document_type_id" component={UpdateDocumentType} />
 
+            <Route exact path="/document" component={DocumentBoard} />
+            <Route exact path="/document/addDocument" component={AddDocument} />
+            
             <Route exact path="/client_type" component={ClientTypeBoard} />
             <Route exact path="/client_type/addClientType" component={AddClientType} />
             <Route exact path="/client_type/updateClientType/:client_type_id" component={UpdateClientType} />
