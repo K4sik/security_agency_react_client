@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+import { deleteContract } from "../../actions/contractActions";
 
 class ContractItem extends Component {
+
+    onDelete(contract_id){
+        this.props.deleteContract(contract_id);
+    }
+
     render() {
 
         const {contract} = this.props;
@@ -20,8 +26,7 @@ class ContractItem extends Component {
                     </Link>
                     <span>      </span>
                     <button className="btn btn-outline-danger" 
-                        // onClick={this.onDelete.bind(this, contract.id)}
-                        >
+                        onClick={this.onDelete.bind(this, contract.id)}>
                         <i className="fas fa-trash"></i>
                     </button>
                     
@@ -31,4 +36,4 @@ class ContractItem extends Component {
     }
 }
 
-export default ContractItem;
+export default connect(null, { deleteContract }) (ContractItem);
