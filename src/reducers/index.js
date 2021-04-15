@@ -11,6 +11,7 @@ import typeOfSecurityReducer from "./typeOfSecurityReducer";
 import productReducer from "./productReducer";
 import employeeReducer from "./employeeReducer";
 import documentReducer from "./documentReducer";
+import contractReducer from "./contractReducer";
 export default combineReducers ({
    //
     errors: errorsReducer,
@@ -19,6 +20,7 @@ export default combineReducers ({
     employee: employeeReducer,
     status: statusReducer,
     typeOfSecurity: typeOfSecurityReducer,
+    contract: contractReducer,
     paymentType: paymentTypeReducer,
     documentType: documentTypeReducer,
     document: documentReducer,

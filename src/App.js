@@ -36,6 +36,7 @@ import ClientBoard from "./components/ClientBoard";
 import AddClient from "./components/Client/AddClient";
 import DocumentBoard from "./components/DocumentBoard";
 import AddDocument from "./components/Document/AddDocument";
+import ContractBoard from "./components/ContractBoard";
 
 class App extends Component {
   render(){
@@ -82,6 +83,8 @@ class App extends Component {
             <Route exact path="/type_of_security" component={TypeOfSecurityBoard} />
             <Route exact path="/type_of_security/addTypeOfSecurity" component={AddTypeOfSecurity} />
             <Route exact path="/type_of_security/updateTypeOfSecurity/:type_of_security_id" component={UpdateTypeOfSecurity} />
+
+            <Route exact path="/contract" component={ContractBoard} />
 
             <Route exact path="/product" component={ProductBoard} />
             <Route exact path="/product/addProduct" component={AddProduct} />
