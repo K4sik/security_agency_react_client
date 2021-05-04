@@ -6,6 +6,7 @@ import classnames from "classnames";
 import { addDocument } from "../../actions/documentActions";
 import { getClients } from "../../actions/clientAction";
 import { getDocumentTypes } from "../../actions/documentTypeAction";
+import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 
 class AddDocument extends Component {
 
@@ -13,7 +14,7 @@ class AddDocument extends Component {
         super();
         this.state = {
             number: "",
-            // date_of_issue: "",
+            date_of_issue: "",
             client: {},
             documentType: {},
             errors: {}
@@ -36,7 +37,7 @@ class AddDocument extends Component {
         e.preventDefault()
         const newDocument = {
             number: this.state.number,
-            // date_of_issue: this.state.date_of_issue,
+            date_of_issue: this.state.date_of_issue,
             client: JSON.parse(this.state.client),
             documentType: JSON.parse(this.state.documentType)
         };
@@ -57,6 +58,10 @@ class AddDocument extends Component {
         const { clients } = this.props.clients;
         
         const { documentTypes } = this.props.documentTypes;
+
+        const minDate = new Date(1960, 0, 1);
+
+        const maxDate = new Date(2100, 0, 1);
         
         return (
             <div className="addDocument">
@@ -85,22 +90,16 @@ class AddDocument extends Component {
                                         )
                                     }
                                 </div>
-                                <div className="form-group">
-                                    <input 
-                                        type="text" 
-                                        className={classnames("form-control form-control-lg", {
-                                            "is-invalid": errors.date_of_issue
-                                        })} 
-                                        // name="last_name" 
-                                        // value={this.state.last_name} 
-                                        placeholder="Date Of Issue" 
-                                        onChange={this.onChange} 
-                                    />
-                                    {
-                                        errors.last_name && (
-                                            <div className="invalid-feedback">{ errors.last_name }</div>
-                                        )
-                                    }
+
+                                <div className="DatePicker">
+                                    <DatePickerComponent placeholder="Enter Date Of Issue"
+                                        min={minDate}
+                                        max={maxDate}
+                                        format="yyyy-MM-dd"
+                                        name="date_of_issue"
+                                        value={this.state.birthday}
+                                        onChange={this.onChange}
+                                    ></DatePickerComponent>
                                 </div>
 
                                 <div className="form-group">
