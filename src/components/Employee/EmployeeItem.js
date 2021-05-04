@@ -18,6 +18,10 @@ class EmployeeItem extends Component {
                 <td>{employee.first_name}</td>
                 <td>{employee.last_name}</td>
                 <td>{employee.position.name}</td>
+                <td>{employee.team.name}</td>
+                <td>{employee.phone_number}</td>
+                <td>{employee.birthday}</td>
+                <td>{employee.address}</td>
                 <td className="button-row">
                     <Link to={`/employee/updateEmployee/${employee.id}`} className="btn btn-outline-primary" >
                         <i className="fas fa-edit"></i>

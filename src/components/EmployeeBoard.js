@@ -43,6 +43,10 @@ class EmployeeBoard extends Component {
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Position</th>
+                            <th>Team</th>
+                            <th>Phone</th>
+                            <th>Birthday</th>
+                            <th>Address</th>
                             <th></th>
                         </tr>
                         </thead>
