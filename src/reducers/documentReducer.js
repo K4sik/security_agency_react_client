@@ -1,7 +1,8 @@
-import { DELETE_DOCUMENT, GET_DOCUMENTS } from '../actions/types'
+import { DELETE_DOCUMENT, GET_DOCUMENTS, GET_DOCUMENT } from '../actions/types'
 
 const initialState = {
-    documents: []
+    documents: [],
+    document: {}
 }
 
 export default function documentReducer(state = initialState, action) {
@@ -11,6 +12,12 @@ export default function documentReducer(state = initialState, action) {
             return{
                 ...state,
                 documents: action.payload
+            };
+
+        case GET_DOCUMENT:
+            return{
+                ...state,
+                document: action.payload
             };
         
         case DELETE_DOCUMENT:

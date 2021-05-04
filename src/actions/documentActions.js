@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_DOCUMENT, GET_DOCUMENTS, GET_ERRORS } from "./types";
+import { DELETE_DOCUMENT, GET_DOCUMENT, GET_DOCUMENTS, GET_ERRORS } from "./types";
 
 export const addDocument = (document, history) => async dispatch => {
     try {
@@ -33,5 +33,17 @@ export const deleteDocument = document_id => async dispatch =>{
             type: DELETE_DOCUMENT,
             payload: document_id
         })
+    }
+};
+
+export const getDocument = (document_id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/document/${document_id}`)
+        dispatch({
+            type: GET_DOCUMENT,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/document");
     }
 };

@@ -39,6 +39,7 @@ import AddDocument from "./components/Document/AddDocument";
 import ContractBoard from "./components/ContractBoard";
 import AddContract from "./components/Contract/AddContract";
 import UpdateClient from "./components/Client/UpdateClient";
+import UpdateDocument from "./components/Document/UpdateDocument";
 
 class App extends Component {
   render(){
@@ -66,6 +67,7 @@ class App extends Component {
 
             <Route exact path="/document" component={DocumentBoard} />
             <Route exact path="/document/addDocument" component={AddDocument} />
+            <Route exact path="/document/updateDocument/:document_id" component={UpdateDocument} />
             
             <Route exact path="/client_type" component={ClientTypeBoard} />
             <Route exact path="/client_type/addClientType" component={AddClientType} />
