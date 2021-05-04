@@ -45,7 +45,11 @@ class ClientBoard extends Component {
                             <th>#</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Position</th>
+                            <th>Type of Client</th>
+                            <th>Name of the company</th>
+                            <th>Phone</th>
+                            <th>Birthday</th>
+                            <th>Address</th>
                             <th></th>
                         </tr>
                         </thead>

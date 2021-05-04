@@ -18,6 +18,10 @@ class ClientItem extends Component {
                 <td>{client.first_name}</td>
                 <td>{client.last_name}</td>
                 <td>{client.clientType.name}</td>
+                <td>{client.company_name}</td>
+                <td>{client.phone_number}</td>
+                <td>{client.birthday}</td>
+                <td>{client.address}</td>
                 <td className="button-row">
                     <Link to={`/client/updateClient/${client.id}`} className="btn btn-outline-primary" >
                         <i className="fas fa-edit"></i>
