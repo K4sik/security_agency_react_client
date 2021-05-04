@@ -6,6 +6,7 @@ import classnames from "classnames";
 import { addEmployee } from "../../actions/employeeActions";
 import { getTeams } from "../../actions/teamActions";
 import { getPositions } from "../../actions/positionActions";
+import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 
 class AddEmployee extends Component {
 
@@ -17,6 +18,7 @@ class AddEmployee extends Component {
             position: {},
             team: {},
             phone_number: "",
+            birthday: "",
             address: "",
             errors: {}
         };
@@ -42,9 +44,10 @@ class AddEmployee extends Component {
             position: JSON.parse(this.state.position),
             team: JSON.parse(this.state.team),
             phone_number: this.state.phone_number,
+            birthday: this.state.birthday,
             address: this.state.address,
         };
-        // console.log(newEmployee);
+        console.log(newEmployee);
         this.props.addEmployee(newEmployee, this.props.history);
     }
 
@@ -52,8 +55,7 @@ class AddEmployee extends Component {
     componentDidMount() {
         this.props.getTeams();
         this.props.getPositions();
-    } 
-    
+    }     
     
     render() {
         const { errors } = this.state;
@@ -61,6 +63,9 @@ class AddEmployee extends Component {
         const { teams } = this.props.teams;
         
         const { positions } = this.props.positions;
+
+        const minDate = new Date(1960, 0, 1);
+        const maxDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDay());
 
         return (
             <div className="addTeam">
@@ -142,6 +147,18 @@ class AddEmployee extends Component {
                                         )
                                     }
                                 </div>
+
+                                <div className="DatePicker">
+                                    <DatePickerComponent placeholder="Enter Birthday"
+                                        min={minDate}
+                                        max={maxDate}
+                                        format="yyyy-MM-dd"
+                                        name="birthday"
+                                        value={this.state.birthday}
+                                        onChange={this.onChange}
+                                    ></DatePickerComponent>
+                                </div>
+
                                 <div className="form-group">
                                     <textarea 
                                         className={classnames("form-control form-control-lg", {
