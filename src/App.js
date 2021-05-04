@@ -38,6 +38,7 @@ import DocumentBoard from "./components/DocumentBoard";
 import AddDocument from "./components/Document/AddDocument";
 import ContractBoard from "./components/ContractBoard";
 import AddContract from "./components/Contract/AddContract";
+import UpdateClient from "./components/Client/UpdateClient";
 
 class App extends Component {
   render(){
@@ -76,6 +77,7 @@ class App extends Component {
 
             <Route exact path="/client" component={ClientBoard} />
             <Route exact path="/client/addClient" component={AddClient} />
+            <Route exact path="/client/updateClient/:client_id" component={UpdateClient} />
 
             <Route exact path="/status" component={StatusBoard} />
             <Route exact path="/status/addStatus" component={AddStatus} />

@@ -39,6 +39,7 @@ export const GET_CLIENTTYPE = "GET_CLIENTTYPE";
 export const DELETE_CLIENTTYPE = "DELETE_CLIENTTYPE";
 
 export const GET_CLIENTS = "GET_CLIENTS";
+export const GET_CLIENT = "GET_CLIENT";
 export const DELETE_CLIENT = "DELETE_CLIENT";
 
 export const GET_PRODUCTS = "GET_PRODUCTS";

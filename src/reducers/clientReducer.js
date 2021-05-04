@@ -1,7 +1,8 @@
-import { DELETE_CLIENT, GET_CLIENTS } from "../actions/types";
+import { DELETE_CLIENT, GET_CLIENTS, GET_CLIENT } from "../actions/types";
 
 const initialState = {
-    clients: []
+    clients: [],
+    client: {}
 }
 
 export default function clientReducer(state = initialState, action) {
@@ -11,6 +12,12 @@ export default function clientReducer(state = initialState, action) {
             return{
                 ...state,
                 clients: action.payload
+            };
+
+        case GET_CLIENT:
+            return{
+                ...state,
+                client: action.payload
             };
 
         case DELETE_CLIENT:
