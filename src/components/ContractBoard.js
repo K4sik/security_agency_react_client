@@ -40,9 +40,13 @@ class ContractBoard extends Component {
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Position</th>
+                            <th>Client</th>
+                            <th>Employee</th>
+                            <th>Date of Agreement</th>
+                            <th>Status</th>
+                            <th>Date begin</th>
+                            <th>Date end</th>
+                            <th>Amount</th>
                             <th></th>
                         </tr>
                         </thead>

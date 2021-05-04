@@ -16,10 +16,13 @@ class ContractItem extends Component {
         return (
             <tr>
                 <td>{contract.id}</td>
-                <td>{contract.first_name}</td>
-                <td>{contract.last_name}</td>
-                <td>{contract.employee.first_name}</td>
-                <td>{contract.employee.last_name}</td>
+                <td>{contract.first_name} {contract.last_name}</td>
+                <td>{contract.employee.first_name} {contract.employee.last_name}</td>
+                <td></td>
+                <td>{contract.status.name}</td>
+                <td>{contract.date_begin}</td>
+                <td>{contract.date_end}</td>
+                <td>{contract.amount}</td>
                 <td className="button-row">
                     <Link to={`/contract/updateContract/${contract.id}`} className="btn btn-outline-primary" >
                         <i className="fas fa-edit"></i>
