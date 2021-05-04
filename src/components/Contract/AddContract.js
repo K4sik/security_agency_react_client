@@ -8,6 +8,7 @@ import { getClients } from "../../actions/clientAction";
 import { getEmployees } from "../../actions/employeeActions";
 import { getStatuses } from "../../actions/statusActions";
 import { getTypesOfSecurity } from "../../actions/typeOfSecurityActions";
+import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 
 class AddContract extends Component {
 
@@ -19,8 +20,8 @@ class AddContract extends Component {
             last_name: "",
             employee: {},
             status: {},
-            // date_begin: "",
-            // date_end: "",
+            date_begin: "",
+            date_end: "",
             amount: "",
             typeOfSecurity: {},
             errors: {}
@@ -47,8 +48,8 @@ class AddContract extends Component {
             last_name: this.state.last_name,
             employee: JSON.parse(this.state.employee),
             status: JSON.parse(this.state.status),
-            // date_begin: this.state,
-            // date_end: this.state,
+            date_begin: this.state.date_begin,
+            date_end: this.state.date_end,
             amount: this.state.amount,
             typeOfSecurity: JSON.parse(this.state.typeOfSecurity),
         };
@@ -74,6 +75,10 @@ class AddContract extends Component {
         const { statuses } = this.props.statuses;
         
         const { typesOfSecurity } = this.props.typesOfSecurity;
+
+        const minDate = new Date(1960, 0, 1);
+
+        const maxDate = new Date(2100, 0, 1);
 
         return (
             <div className="addContract">
@@ -148,40 +153,26 @@ class AddContract extends Component {
                                 </select>
                             </div>
 
-                            <div className="form-group">
-                                <input 
-                                    type="text" 
-                                    className={classnames("form-control form-control-lg", {
-                                        "is-invalid": errors.date_begin
-                                    })} 
-                                    name="date_begin" 
-                                    value={this.state.date_begin} 
-                                    placeholder="date_begin" 
-                                    onChange={this.onChange} 
-                                />
-                                {
-                                    errors.date_begin && (
-                                        <div className="invalid-feedback">{ errors.date_begin }</div>
-                                    )
-                                }
+                            <div className="DatePicker">
+                                <DatePickerComponent placeholder="Enter Date Of Issue"
+                                    min={minDate}
+                                    max={maxDate}
+                                    format="yyyy-MM-dd"
+                                    name="date_begin"
+                                    value={this.state.date_begin}
+                                    onChange={this.onChange}
+                                ></DatePickerComponent>
                             </div>
 
-                            <div className="form-group">
-                                <input 
-                                    type="text" 
-                                    className={classnames("form-control form-control-lg", {
-                                        "is-invalid": errors.date_end
-                                    })} 
-                                    name="date_end" 
-                                    value={this.state.date_end} 
-                                    placeholder="date_end" 
-                                    onChange={this.onChange} 
-                                />
-                                {
-                                    errors.date_end && (
-                                        <div className="invalid-feedback">{ errors.date_end }</div>
-                                    )
-                                }
+                            <div className="DatePicker">
+                                <DatePickerComponent placeholder="Enter Date Of Issue"
+                                    min={minDate}
+                                    max={maxDate}
+                                    format="yyyy-MM-dd"
+                                    name="date_end"
+                                    value={this.state.date_end}
+                                    onChange={this.onChange}
+                                ></DatePickerComponent>
                             </div>
 
                             <div className="form-group">
