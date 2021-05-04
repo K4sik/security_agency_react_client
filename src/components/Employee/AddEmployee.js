@@ -65,6 +65,7 @@ class AddEmployee extends Component {
         const { positions } = this.props.positions;
 
         const minDate = new Date(1960, 0, 1);
+        
         const maxDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDay());
 
         return (
