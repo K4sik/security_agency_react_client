@@ -97,7 +97,7 @@ class AddDocument extends Component {
                                         max={maxDate}
                                         format="yyyy-MM-dd"
                                         name="date_of_issue"
-                                        value={this.state.birthday}
+                                        value={this.state.date_of_issue}
                                         onChange={this.onChange}
                                     ></DatePickerComponent>
                                 </div>
