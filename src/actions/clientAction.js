@@ -44,6 +44,6 @@ export const getClient = (client_id, history) => async dispatch => {
             payload: res.data
         });
     } catch (error) {
-        // history.push("/client");
+        history.push("/client");
     }
 };
