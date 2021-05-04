@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { addClient } from "../../actions/clientAction";
 import { getClientTypes } from "../../actions/clientTypeActions";
+import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
 
 class AddClient extends Component {
 
@@ -16,6 +17,7 @@ class AddClient extends Component {
             clientType: {},
             company_name: "",
             phone_number: "",
+            birthday: "",
             address: "",
             errors: {}
         };
@@ -35,6 +37,7 @@ class AddClient extends Component {
             clientType: JSON.parse(this.state.clientType),
             company_name: this.state.company_name,
             phone_number: this.state.phone_number,
+            birthday: this.state.birthday,
             address: this.state.address,
         };
         console.log(newClient);
@@ -50,6 +53,10 @@ class AddClient extends Component {
         const { errors } = this.state;
 
         const { clientTypes } = this.props.clientTypes;
+
+        const minDate = new Date(1930, 0, 1);
+
+        const maxDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDay());
 
         return (
             <div className="addClient">
@@ -141,6 +148,18 @@ class AddClient extends Component {
                                         )
                                     }
                                 </div>
+
+                                <div className="DatePicker">
+                                    <DatePickerComponent placeholder="Enter Birthday"
+                                        min={minDate}
+                                        max={maxDate}
+                                        format="yyyy-MM-dd"
+                                        name="birthday"
+                                        value={this.state.birthday}
+                                        onChange={this.onChange}
+                                    ></DatePickerComponent>
+                                </div>
+
                                 <div className="form-group">
                                     <textarea 
                                         className={classnames("form-control form-control-lg", {
