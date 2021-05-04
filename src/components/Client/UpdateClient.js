@@ -87,8 +87,6 @@ class UpdateClient extends Component {
 
         const { clientTypes } = this.props.clientTypes;
 
-        const currentDate = new Date(this.state.birthday);
-
         const minDate = new Date(1930, 0, 1);
 
         const maxDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDay());
@@ -188,10 +186,9 @@ class UpdateClient extends Component {
                                     <DatePickerComponent placeholder="Enter Birthday"
                                         min={minDate}
                                         max={maxDate}
-                                        value={currentDate}
+                                        value={this.state.birthday}
                                         format="yyyy-MM-dd"
                                         name="birthday"
-                                        // value={this.state.birthday}
                                         onChange={this.onChange}
                                     ></DatePickerComponent>
                                 </div>
