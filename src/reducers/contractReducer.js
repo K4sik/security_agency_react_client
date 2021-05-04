@@ -1,7 +1,8 @@
-import { DELETE_CONTRACT, GET_CONTRACTS } from "../actions/types";
+import { DELETE_CONTRACT, GET_CONTRACT, GET_CONTRACTS } from "../actions/types";
 
 const initialState = {
-    contracts: []
+    contracts: [],
+    contract: {}
 }
 
 export default function contractReducer(state = initialState, action) {
@@ -11,6 +12,12 @@ export default function contractReducer(state = initialState, action) {
             return{
                 ...state,
                 contracts: action.payload
+            };
+
+        case GET_CONTRACT:
+            return{
+                ...state,
+                contract: action.payload
             };
 
         case DELETE_CONTRACT:

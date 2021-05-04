@@ -40,6 +40,7 @@ import ContractBoard from "./components/ContractBoard";
 import AddContract from "./components/Contract/AddContract";
 import UpdateClient from "./components/Client/UpdateClient";
 import UpdateDocument from "./components/Document/UpdateDocument";
+import UpdateContract from "./components/Contract/UpdateContract";
 
 class App extends Component {
   render(){
@@ -91,6 +92,7 @@ class App extends Component {
 
             <Route exact path="/contract" component={ContractBoard} />
             <Route exact path="/contract/addContract" component={AddContract} />
+            <Route exact path="/contract/updateContract/:contract_id" component={UpdateContract} />
 
             <Route exact path="/product" component={ProductBoard} />
             <Route exact path="/product/addProduct" component={AddProduct} />

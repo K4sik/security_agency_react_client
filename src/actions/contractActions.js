@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_CONTRACT, GET_CONTRACTS, GET_ERRORS } from "./types";
+import { DELETE_CONTRACT, GET_CONTRACT, GET_CONTRACTS, GET_ERRORS } from "./types";
 
 export const addContract = (contract, history) => async dispatch => {
     try {
@@ -33,5 +33,17 @@ export const deleteContract = contract_id => async dispatch =>{
             type: DELETE_CONTRACT,
             payload: contract_id
         })
+    }
+};
+
+export const getContract = (contract_id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/contract/${contract_id}`)
+        dispatch({
+            type: GET_CONTRACT,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/contract");
     }
 };
