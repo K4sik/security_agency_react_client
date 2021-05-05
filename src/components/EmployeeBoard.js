@@ -5,8 +5,16 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getEmployees } from "../actions/employeeActions";
 import { Table } from "react-bootstrap";
+import axios from "axios";
 
 class EmployeeBoard extends Component {
+    
+    onPrintClick(){
+        if(window.confirm( `Are you sure want to save report of Employees? `)){
+            axios.get("http://localhost:8080/api/employee/report/html");
+        }
+    }
+
     componentDidMount() {
         this.props.getEmployees();
     }
@@ -64,11 +72,14 @@ class EmployeeBoard extends Component {
 
         return (
             <div className="container">
-            <Link to="/employee/addEmployee" className="btn btn-primary mb-3">
-                <i className="fas fa-plus-circle"> Create new Employee</i>
-            </Link>
-            <br />
-            <hr />            
+                    <Link to="/employee/addEmployee" className="btn btn-primary mb-3">
+                        <i className="fas fa-plus-circle"> Create new Employee</i>
+                    </Link>
+                    <button className="btn btn-outline-success mb-3 printButton" onClick={(this.onPrintClick)}>
+                        <i className="fas fa-print"> Print</i>
+                    </button>
+                <br />
+                <hr />            
                 {BoardContent}
             </div>
         )

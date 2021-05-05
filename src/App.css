@@ -9,3 +9,8 @@
 .DatePicker{
     font-size: 15px;
 }
+
+.printButton{
+    float: right;
+    margin-right: 25px;
+}
