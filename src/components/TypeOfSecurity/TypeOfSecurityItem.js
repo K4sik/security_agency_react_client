@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { deleteTypeOfSecurity } from "../../actions/typeOfSecurityActions";
 
 var divStyle = {
-    margin:"6px"
+    margin:"2px"
 }
 
 class TypeOfSecurityItem extends Component {
