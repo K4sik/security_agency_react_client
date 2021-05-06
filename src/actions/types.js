@@ -1,5 +1,14 @@
 export const GET_ERRORS = "GET_ERRORS";
 
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT = "LOGOUT";
+
+export const SET_MESSAGE = "SET_MESSAGE";
+export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+
 export const GET_TEAMS = "GET_TEAMS";
 export const GET_TEAM = "GET_TEAM";
 export const DELETE_TEAM = "DELETE_TEAM";

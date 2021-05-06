@@ -12,6 +12,8 @@ import productReducer from "./productReducer";
 import employeeReducer from "./employeeReducer";
 import documentReducer from "./documentReducer";
 import contractReducer from "./contractReducer";
+import authReducer from "./authReducer";
+import messageReducer from "./messageReducer";
 export default combineReducers ({
    //
     errors: errorsReducer,
@@ -26,5 +28,7 @@ export default combineReducers ({
     document: documentReducer,
     clientType: clientTypeReducer,
     client: clientReducer,
-    product: productReducer
+    product: productReducer,
+    auth: authReducer,
+    message: messageReducer
 })
