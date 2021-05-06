@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { deleteProduct } from "../../actions/productActions";
 
 var divStyle = {
-    margin:"6px"
+    margin:"2px"
 }
 
 class ProductItem extends Component {

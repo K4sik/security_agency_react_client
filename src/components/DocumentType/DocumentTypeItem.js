@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { deleteDocumentType } from "../../actions/documentTypeAction";
 
 var divStyle = {
-    margin:"6px"
+    margin:"2px"
 }
 
 class DocumentTypeItem extends Component {

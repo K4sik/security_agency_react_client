@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { deletePosition } from "../../actions/positionActions";
 
 var divStyle = {
-    margin:"6px"
+    margin:"2px"
 }
 
 class PositionItem extends Component {

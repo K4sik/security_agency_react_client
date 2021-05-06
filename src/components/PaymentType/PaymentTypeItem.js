@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { deletePaymentType } from "../../actions/paymentTypeActions";
 
 var divStyle = {
-    margin:"6px"
+    margin:"2px"
 }
 
 class PaymentTypeItem extends Component {

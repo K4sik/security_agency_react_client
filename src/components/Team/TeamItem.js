@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { deleteTeam } from "../../actions/teamActions";
 
 var divStyle = {
-    margin:"6px"
+    margin:"2px"
 }
 
 class TeamItem extends Component {

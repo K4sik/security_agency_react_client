@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { deleteStatus } from "../../actions/statusActions";
 
 var divStyle = {
-    margin:"6px"
+    margin:"2px"
 }
 
 class StatusItem extends Component {

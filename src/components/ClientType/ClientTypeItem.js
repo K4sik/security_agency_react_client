@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { deleteClientType } from "../../actions/clientTypeActions"
 
 var divStyle = {
-    margin:"6px"
+    margin:"2px"
 }
 
 class ClientTypeItem extends Component {
